@@ -1,0 +1,88 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Services — Daisyglams Dashboard{% endblock %}
+{% block page_title %}Services{% endblock %}
+{% block page_subtitle %}Add and manage the services shown on your booking page{% endblock %}
+{% block nav_services %}active{% endblock %}
+
+{% block content %}
+<div class="space-y-8 fade-up">
+
+  <!-- Add Service Form -->
+  <div class="dash-card space-y-5">
+    <h2 class="font-serif text-lg font-bold text-white">Add New Service</h2>
+    <div class="gold-divider"></div>
+
+    <form method="POST" class="space-y-4">
+      {% csrf_token %}
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Service Name *</label>
+          <input type="text" name="name" placeholder="e.g. Luxury Nail Art" required
+            class="w-full text-sm rounded-xl px-4 py-3 outline-none"
+            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #fff;" />
+        </div>
+        <div>
+          <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Price (₦) *</label>
+          <input type="number" name="price" placeholder="e.g. 15000" required
+            class="w-full text-sm rounded-xl px-4 py-3 outline-none"
+            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #fff;" />
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Emoji</label>
+          <input type="text" name="emoji" placeholder="e.g. 💅" maxlength="5" value="💅"
+            class="w-full text-sm rounded-xl px-4 py-3 outline-none"
+            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #fff;" />
+        </div>
+        <div>
+          <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Description</label>
+          <input type="text" name="description" placeholder="Short description..."
+            class="w-full text-sm rounded-xl px-4 py-3 outline-none"
+            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #fff;" />
+        </div>
+      </div>
+      <button type="submit"
+        class="text-black font-bold px-8 py-3 rounded-xl text-sm"
+        style="background: linear-gradient(135deg, #D4AF37, #F0C040);">
+        + Add Service
+      </button>
+    </form>
+  </div>
+
+  <!-- Services List -->
+  <div>
+    <h2 class="font-serif text-lg font-bold text-white mb-4">Current Services ({{ services|length }})</h2>
+    {% if services %}
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {% for service in services %}
+      <div class="dash-card flex items-start justify-between gap-3">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">{{ service.emoji }}</span>
+          <div>
+            <p class="text-white font-semibold text-sm">{{ service.name }}</p>
+            <p class="text-gold-300 text-xs mt-0.5">₦{{ service.price|floatformat:"0" }}</p>
+            {% if service.description %}
+            <p class="text-gray-500 text-xs mt-1">{{ service.description }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <a href="{% url 'dashboard:delete_service' service.pk %}"
+           onclick="return confirm('Delete {{ service.name }}?')"
+           class="text-red-500 hover:text-red-400 transition-colors shrink-0 text-xs mt-0.5">
+          🗑
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="dash-card text-center py-16">
+      <div class="text-4xl mb-3">💅</div>
+      <p class="text-gray-500">No services yet. Add your first one above!</p>
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

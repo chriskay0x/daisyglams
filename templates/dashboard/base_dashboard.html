@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Dashboard - Daisyglams{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="..\static\images\Daisy_Logo.png" type="image/x-icon">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { 300: '#F0C040', 400: '#D4AF37', 500: '#B8860B' },
+            purple: { 900: '#1A0533', 800: '#2D0A4E', 700: '#4C1D95', 600: '#6B21A8', 500: '#8B5CF6', 400: '#A78BFA', 300: '#C4B5FD' },
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Outfit', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0D0D14; font-family: 'Outfit', sans-serif; }
+    .text-gold-gradient { background: linear-gradient(135deg, #F0C040 0%, #D4AF37 40%, #F0C040 70%, #B8860B 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gold-divider { height: 1px; background: linear-gradient(90deg, transparent, #D4AF37, transparent); }
+    .glass { background: rgba(255,255,255,0.04); backdrop-filter: blur(12px); border: 1px solid rgba(212,175,55,0.15); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0D0D14; }
+    ::-webkit-scrollbar-thumb { background: #6B21A8; border-radius: 3px; }
+
+    /* Sidebar */
+    .sidebar { background: linear-gradient(180deg, #0D0D14 0%, #1A0533 100%); border-right: 1px solid rgba(212,175,55,0.12); }
+    .nav-link { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 12px; color: #6b7280; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; }
+    .nav-link:hover { background: rgba(212,175,55,0.08); color: #F0C040; }
+    .nav-link.active { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(107,33,168,0.15)); color: #F0C040; border: 1px solid rgba(212,175,55,0.2); }
+    .nav-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* Cards */
+    .dash-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.12); border-radius: 16px; padding: 20px; transition: all 0.3s; }
+    .dash-card:hover { border-color: rgba(212,175,55,0.3); }
+
+    /* Badge */
+    .badge { font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 999px; }
+    .badge-pending { background: rgba(234,179,8,0.15); color: #fbbf24; border: 1px solid rgba(234,179,8,0.3); }
+    .badge-confirmed { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+    .badge-completed { background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+    .badge-cancelled { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeInUp 0.5s ease-out forwards; }
+
+    {% block extra_styles %}{% endblock %}
+  </style>
+</head>
+<body class="text-white">
+
+  <div class="flex h-screen overflow-hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar w-64 flex-shrink-0 flex flex-col h-full overflow-y-auto hidden lg:flex">
+      <!-- Logo -->
+      <div class="p-6 pb-4">
+        <a href="{% url 'dashboard:overview' %}" class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-full">
+            <img src="..\static\images\Daisy_Logo.png" alt="Daisy Logo">
+          </div>
+          <span class="font-serif text-xl"><span class="text-gold-gradient font-bold">Daisy</span><span class="text-white">glams</span></span>
+        </a>
+        <p class="text-gray-600 text-xs mt-1 ml-11">Admin Dashboard</p>
+      </div>
+
+      <div class="gold-divider mx-6 mb-4"></div>
+
+      <!-- Nav Links -->
+      <nav class="flex-1 px-4 space-y-1">
+        <a href="{% url 'dashboard:overview' %}" class="nav-link {% block nav_overview %}{% endblock %}">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Overview
+        </a>
+        <a href="{% url 'dashboard:bookings' %}" class="nav-link {% block nav_bookings %}{% endblock %}">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          Bookings
+          {% if pending_bookings_count %}
+          <span class="ml-auto badge badge-pending">{{ pending_bookings_count }}</span>
+          {% endif %}
+        </a>
+        <a href="{% url 'dashboard:payments' %}" class="nav-link {% block nav_payments %}{% endblock %}">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Payments
+          {% if pending_payments_count %}
+          <span class="ml-auto badge badge-pending">{{ pending_payments_count }}</span>
+          {% endif %}
+        </a>
+        <a href="{% url 'dashboard:gallery' %}" class="nav-link {% block nav_gallery %}{% endblock %}">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          Gallery
+        </a>
+        <a href="{% url 'dashboard:services' %}" class="nav-link {% block nav_services %}{% endblock %}">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          Services
+        </a>
+        <a href="{% url 'dashboard:settings' %}" class="nav-link {% block nav_settings %}{% endblock %}">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Settings
+        </a>
+      </nav>
+
+      <!-- Bottom -->
+      <div class="p-4 space-y-3">
+        <div class="gold-divider"></div>
+        <a href="{% url 'core:home' %}" target="_blank" class="nav-link text-xs">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          View Live Site
+        </a>
+        <a href="{% url 'dashboard:logout' %}" class="nav-link text-red-500 hover:bg-red-500/10 hover:text-red-400">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN AREA -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+
+      <!-- Top bar -->
+      <header class="flex items-center justify-between px-6 py-4 border-b border-white/5" style="background: rgba(13,13,20,0.8); backdrop-filter: blur(12px);">
+        <div>
+          <h1 class="font-serif text-xl font-bold text-white">{% block page_title %}Dashboard{% endblock %}</h1>
+          <p class="text-gray-600 text-xs mt-0.5">{% block page_subtitle %}Welcome back!{% endblock %}</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <!-- Mobile menu btn -->
+          <button id="mob-menu-btn" class="lg:hidden text-gray-400 hover:text-gold-300 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <!-- Admin badge -->
+          <div class="hidden sm:flex items-center gap-2 glass rounded-full px-3 py-1.5">
+            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-purple-600 to-gold-400 flex items-center justify-center text-black font-bold text-xs">D</div>
+            <span class="text-xs text-gray-300">{{ request.user.username }}</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Messages -->
+      {% if messages %}
+      <div class="px-6 pt-4">
+        {% for message in messages %}
+        <div class="flex items-center gap-3 p-3 rounded-xl mb-2 text-sm
+          {% if message.tags == 'error' %}
+            text-red-300" style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);"
+          {% else %}
+            text-green-300" style="background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25);"
+          {% endif %}>
+          {% if message.tags == 'error' %}⚠{% else %}✓{% endif %}
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- Page Content -->
+      <main class="flex-1 overflow-y-auto p-6">
+        {% block content %}{% endblock %}
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Mobile sidebar overlay -->
+  <div id="mob-sidebar" class="fixed inset-0 z-50 hidden lg:hidden">
+    <div class="absolute inset-0 bg-black/60" onclick="closeMobMenu()"></div>
+    <div class="absolute left-0 top-0 bottom-0 w-64 sidebar flex flex-col overflow-y-auto">
+      <div class="p-6 pb-4">
+        <div class="flex items-center justify-between">
+          <span class="font-serif text-xl"><span class="text-gold-gradient font-bold">Daisy</span><span class="text-white">glams</span></span>
+          <button onclick="closeMobMenu()" class="text-gray-500 hover:text-white">✕</button>
+        </div>
+      </div>
+      <div class="gold-divider mx-6 mb-4"></div>
+      <nav class="flex-1 px-4 space-y-1">
+        <a href="{% url 'dashboard:overview' %}" class="nav-link" onclick="closeMobMenu()">📊 Overview</a>
+        <a href="{% url 'dashboard:bookings' %}" class="nav-link" onclick="closeMobMenu()">📅 Bookings</a>
+        <a href="{% url 'dashboard:payments' %}" class="nav-link" onclick="closeMobMenu()">💳 Payments</a>
+        <a href="{% url 'dashboard:gallery' %}" class="nav-link" onclick="closeMobMenu()">🖼️ Gallery</a>
+        <a href="{% url 'dashboard:services' %}" class="nav-link" onclick="closeMobMenu()">💅 Services</a>
+        <a href="{% url 'dashboard:settings' %}" class="nav-link" onclick="closeMobMenu()">⚙️ Settings</a>
+      </nav>
+      <div class="p-4">
+        <a href="{% url 'dashboard:logout' %}" class="nav-link text-red-500">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('mob-menu-btn').addEventListener('click', () => {
+      document.getElementById('mob-sidebar').classList.remove('hidden');
+    });
+    function closeMobMenu() {
+      document.getElementById('mob-sidebar').classList.add('hidden');
+    }
+  </script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login - Daisyglams</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: { 300: '#F0C040', 400: '#D4AF37', 500: '#B8860B' },
+            purple: { 600: '#6B21A8', 500: '#8B5CF6' },
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Outfit', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #0D0D14; font-family: 'Outfit', sans-serif; }
+    .text-gold-gradient { background: linear-gradient(135deg, #F0C040, #D4AF37, #B8860B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .form-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 12px 16px; color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.9rem; outline: none; transition: all 0.3s; }
+    .form-input:focus { border-color: rgba(212,175,55,0.6); box-shadow: 0 0 0 3px rgba(212,175,55,0.08); background: rgba(255,255,255,0.07); }
+    .form-input::placeholder { color: rgba(156,163,175,0.5); }
+    @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+    .btn-shimmer { background: linear-gradient(90deg, #B8860B, #D4AF37, #F0C040, #D4AF37, #B8860B); background-size: 200% auto; animation: shimmer 3s linear infinite; transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-shimmer:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212,175,55,0.4); }
+    .orb { border-radius: 50%; filter: blur(80px); position: absolute; pointer-events: none; }
+  </style>
+</head>
+<body class="text-white min-h-screen flex items-center justify-center relative overflow-hidden">
+
+  <div class="orb w-80 h-80 bg-purple-600 opacity-20 top-0 right-0"></div>
+  <div class="orb w-64 h-64 bg-yellow-400 opacity-8 bottom-0 left-0"></div>
+
+  <div class="relative z-10 w-full max-w-md mx-auto px-6">
+
+    <!-- Logo -->
+    <div class="text-center mb-10">
+      <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-gold-400 flex items-center justify-center text-black font-bold text-2xl mx-auto mb-4" style="box-shadow: 0 0 30px rgba(139,92,246,0.4);">D</div>
+      <h1 class="font-serif text-3xl font-bold">
+        <span class="text-gold-gradient">Daisy</span><span class="text-white">glams</span>
+      </h1>
+      <p class="text-gray-500 text-sm mt-1">Admin Portal</p>
+    </div>
+
+    <!-- Card -->
+    <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.2); border-radius: 24px; padding: 32px;">
+
+      <h2 class="font-serif text-xl font-bold text-white mb-1">Welcome back 👋</h2>
+      <p class="text-gray-500 text-sm mb-6">Sign in to manage your bookings & designs.</p>
+
+      {% if messages %}
+        {% for message in messages %}
+        <div class="text-red-300 text-sm p-3 rounded-xl mb-4" style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);">
+          ⚠ {{ message }}
+        </div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="POST" class="space-y-4">
+        {% csrf_token %}
+        <div>
+          <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Username</label>
+          <input type="text" name="username" id="username" placeholder="Enter your username" class="form-input" required autofocus />
+        </div>
+        <div>
+          <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Password</label>
+          <div class="relative">
+            <input type="password" name="password" id="password" placeholder="Enter your password" class="form-input pr-10" required />
+            <button type="button" onclick="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gold-300 transition-colors">
+              <svg id="eye-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="btn-shimmer w-full text-black font-bold py-3.5 rounded-xl text-sm mt-2">
+          Sign In to Dashboard →
+        </button>
+      </form>
+
+    </div>
+
+    <p class="text-center text-gray-700 text-xs mt-6">
+      <a href="{% url 'core:home' %}" class="hover:text-gold-300 transition-colors">← Back to website</a>
+    </p>
+
+    </div>
+
+    <script>
+        function togglePassword() {
+            const input = document.getElementById('password');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+</body>
+</html>

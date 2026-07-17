@@ -1,0 +1,75 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Settings — Daisyglams Dashboard{% endblock %}
+{% block page_title %}Settings{% endblock %}
+{% block page_subtitle %}Update your bank details and business information{% endblock %}
+{% block nav_settings %}active{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl space-y-8 fade-up">
+
+  <!-- Bank Account Settings -->
+  <div class="dash-card space-y-5">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.2);">🏦</div>
+      <div>
+        <h2 class="font-serif text-lg font-bold text-white">Bank Account Details</h2>
+        <p class="text-gray-500 text-xs">Shown to customers on the payment page</p>
+      </div>
+    </div>
+    <div class="gold-divider"></div>
+
+    <form method="POST" class="space-y-4">
+      {% csrf_token %}
+      <div>
+        <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Bank Name *</label>
+        <input type="text" name="bank_name" value="{{ account.bank_name|default:'' }}" placeholder="e.g. First Bank of Nigeria" required
+          class="w-full text-sm rounded-xl px-4 py-3 outline-none transition-all"
+          style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #fff;" />
+      </div>
+      <div>
+        <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Account Name *</label>
+        <input type="text" name="account_name" value="{{ account.account_name|default:'' }}" placeholder="e.g. Daisyglams Beauty Studio" required
+          class="w-full text-sm rounded-xl px-4 py-3 outline-none transition-all"
+          style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #fff;" />
+      </div>
+      <div>
+        <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Account Number *</label>
+        <input type="text" name="account_number" value="{{ account.account_number|default:'' }}" placeholder="e.g. 0123456789" required
+          class="w-full text-sm rounded-xl px-4 py-3 outline-none transition-all"
+          style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #fff;" />
+      </div>
+      <div>
+        <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">WhatsApp Number</label>
+        <input type="text" name="whatsapp_number" value="{{ account.whatsapp_number|default:'' }}" placeholder="e.g. +2348000000000"
+          class="w-full text-sm rounded-xl px-4 py-3 outline-none transition-all"
+          style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #fff;" />
+        <p class="text-gray-600 text-xs mt-1">Used for the WhatsApp quick-chat link on the payment page</p>
+      </div>
+      <button type="submit"
+        class="text-black font-bold px-8 py-3 rounded-xl text-sm transition-all"
+        style="background: linear-gradient(135deg, #D4AF37, #F0C040);">
+        Save Settings
+      </button>
+    </form>
+  </div>
+
+  <!-- Admin Info Card -->
+  <div class="dash-card space-y-3" style="border-color: rgba(139,92,246,0.2);">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.2);">👤</div>
+      <div>
+        <h2 class="font-serif text-lg font-bold text-white">Admin Account</h2>
+        <p class="text-gray-500 text-xs">Logged in as <span class="text-purple-300">{{ request.user.username }}</span></p>
+      </div>
+    </div>
+    <div class="gold-divider"></div>
+    <p class="text-gray-500 text-sm">To change your admin password, use the Django shell or contact your developer.</p>
+    <a href="{% url 'dashboard:logout' %}" class="inline-flex items-center gap-2 text-sm text-red-400 hover:text-red-300 transition-colors">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+      Logout
+    </a>
+  </div>
+
+</div>
+{% endblock %}

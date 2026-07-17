@@ -1,0 +1,114 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Gallery — Daisyglams Dashboard{% endblock %}
+{% block page_title %}Gallery{% endblock %}
+{% block page_subtitle %}Upload and manage nail design photos{% endblock %}
+{% block nav_gallery %}active{% endblock %}
+
+{% block extra_styles %}
+.upload-area { border: 2px dashed rgba(212,175,55,0.25); border-radius: 16px; padding: 32px; text-align: center; cursor: pointer; transition: all 0.3s; }
+.upload-area:hover { border-color: rgba(212,175,55,0.55); background: rgba(212,175,55,0.03); }
+{% endblock %}
+
+{% block content %}
+<div class="space-y-8 fade-up">
+
+  <!-- Upload Form -->
+  <div class="dash-card space-y-5">
+    <h2 class="font-serif text-lg font-bold text-white">Upload New Design</h2>
+    <div class="gold-divider"></div>
+
+    <form method="POST" enctype="multipart/form-data" class="space-y-4">
+      {% csrf_token %}
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Design Title *</label>
+          <input type="text" name="title" placeholder="e.g. Chrome Collection" required
+            class="w-full text-sm rounded-xl px-4 py-3 outline-none transition-all"
+            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #fff;" />
+        </div>
+        <div>
+          <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Category *</label>
+          <select name="category" required
+            class="w-full text-sm rounded-xl px-4 py-3 outline-none transition-all"
+            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); color: #fff;">
+            <option value="">Select category</option>
+            <option value="nail-art">Nail Art</option>
+            <option value="extensions">Extensions</option>
+            <option value="manicure">Manicure</option>
+            <option value="pedicure">Pedicure</option>
+            <option value="gel">Gel Polish</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs text-gray-500 uppercase tracking-widest font-medium mb-2">Image *</label>
+        <div class="upload-area" onclick="document.getElementById('design-img').click()">
+          <input type="file" id="design-img" name="image" accept="image/*" class="hidden" onchange="previewImg(this)" required />
+          <div id="img-placeholder">
+            <div class="text-3xl mb-2">📸</div>
+            <p class="text-gray-400 text-sm">Click to upload a nail design photo</p>
+            <p class="text-gray-600 text-xs mt-1">JPG, PNG, WEBP recommended</p>
+          </div>
+          <div id="img-preview" class="hidden">
+            <img id="preview-src" src="" alt="Preview" class="max-h-40 mx-auto rounded-xl object-contain" />
+            <p class="text-gold-300 text-xs mt-2" id="preview-filename"></p>
+          </div>
+        </div>
+      </div>
+      <button type="submit"
+        class="text-black font-bold px-8 py-3 rounded-xl text-sm transition-all"
+        style="background: linear-gradient(135deg, #D4AF37, #F0C040);">
+        Upload Design
+      </button>
+    </form>
+  </div>
+
+  <!-- Designs Grid -->
+  <div>
+    <h2 class="font-serif text-lg font-bold text-white mb-4">All Designs ({{ designs|length }})</h2>
+    {% if designs %}
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {% for design in designs %}
+      <div class="dash-card p-0 overflow-hidden group relative">
+        <img src="{{ design.image.url }}" alt="{{ design.title }}"
+             class="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3">
+          <p class="text-white text-xs font-semibold">{{ design.title }}</p>
+          <p class="text-gold-300 text-xs">{{ design.get_category_display }}</p>
+          <a href="{% url 'dashboard:delete_design' design.pk %}"
+             onclick="return confirm('Delete this design?')"
+             class="mt-2 text-xs text-red-400 hover:text-red-300 transition-colors">
+            🗑 Delete
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="dash-card text-center py-16">
+      <div class="text-4xl mb-3">🖼️</div>
+      <p class="text-gray-500">No designs uploaded yet. Add your first one above!</p>
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  function previewImg(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      document.getElementById('img-placeholder').classList.add('hidden');
+      document.getElementById('img-preview').classList.remove('hidden');
+      document.getElementById('preview-src').src = e.target.result;
+      document.getElementById('preview-filename').textContent = file.name;
+    };
+    reader.readAsDataURL(file);
+  }
+</script>
+{% endblock %}
