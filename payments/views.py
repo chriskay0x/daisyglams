@@ -23,9 +23,16 @@ def payment(request):
     if request.method == 'POST':
         form = PaymentProofForm(request.POST, request.FILES)
         if form.is_valid():
-            proof = form.save(commit=False)
-            proof.appointment = appointment
-            proof.save()
+            proof, created = PaymentProof.objects.update_or_create(
+                appointment=appointment,
+                defaults={
+                    'sender_name': form.cleaned_data['sender_name'],
+                    'receipt': form.cleaned_data['receipt'],
+                    'note': form.cleaned_data['note'],
+                }
+            )
+
+            dashboard_url = request.build_absolute_uri('/dashboard/payments/')
 
             # Send email notification to admin
             try:
@@ -43,7 +50,7 @@ Phone: {appointment.phone}
 Sender Name: {proof.sender_name}
 
 Please log into the dashboard to verify:
-http://127.0.0.1:8000/dashboard/payments/
+{dashboard_url}
                     ''',
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[settings.ADMIN_EMAIL],
