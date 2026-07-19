@@ -11,11 +11,11 @@
 .fade-1 { animation: fadeInUp 0.6s ease-out 0.5s both; }
 .fade-2 { animation: fadeInUp 0.6s ease-out 0.7s both; }
 .fade-3 { animation: fadeInUp 0.6s ease-out 0.9s both; }
-.shimmer-gold { background: linear-gradient(90deg, #B8860B, #D4AF37, #F0C040, #D4AF37, #B8860B); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmerText 3s linear infinite; }
+.shimmer-text { background: linear-gradient(90deg, #d63384, #ff69b4, #9c27b0, #ff69b4, #d63384); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmerText 3s linear infinite; }
 .confetti-piece { position: fixed; animation: confettiFall linear both; pointer-events: none; z-index: 100; }
 .next-step { transition: all 0.3s; }
 .next-step:hover { transform: translateX(4px); }
-.sum-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.sum-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(156,39,176,0.1); }
 .sum-row:last-child { border-bottom: none; }
 {% endblock %}
 
@@ -25,30 +25,30 @@
 
 <!-- HERO SUCCESS -->
 <section class="min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-16 relative overflow-hidden">
-  <div class="orb w-96 h-96 bg-purple-700 opacity-25 top-0 right-0"></div>
-  <div class="orb w-80 h-80 bg-gold-400 opacity-10 bottom-0 left-0"></div>
+  <div class="orb w-96 h-96 bg-purple-main opacity-20 top-0 right-0"></div>
+  <div class="orb w-80 h-80 bg-pink-soft opacity-20 bottom-0 left-0"></div>
 
   <div class="relative z-10 text-center max-w-2xl mx-auto space-y-8">
 
     <!-- Icon -->
     <div class="success-icon flex justify-center">
       <div class="relative">
-        <div class="w-28 h-28 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, #D4AF37, #F0C040); box-shadow: 0 0 0 12px rgba(212,175,55,0.08), 0 0 0 24px rgba(212,175,55,0.04), 0 0 60px rgba(212,175,55,0.2);">
-          <svg class="w-14 h-14 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        <div class="w-28 h-28 rounded-full flex items-center justify-center" style="background: var(--gradient-main); box-shadow: 0 0 0 12px rgba(156,39,176,0.08), 0 0 0 24px rgba(156,39,176,0.04), 0 0 60px rgba(156,39,176,0.2);">
+          <svg class="w-14 h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
         </div>
-        <div class="absolute -top-2 -right-2 text-xl animate-bounce" style="animation-delay:0.2s;">✨</div>
-        <div class="absolute -bottom-2 -left-2 text-lg animate-bounce" style="animation-delay:0.5s;">💜</div>
+        <div class="absolute -top-2 -right-2 text-xl animate-bounce" style="animation-delay:0.2s;"><i class="fas fa-sparkles text-pink-main"></i></div>
+        <div class="absolute -bottom-2 -left-2 text-lg animate-bounce" style="animation-delay:0.5s;"><i class="fas fa-heart text-purple-main"></i></div>
       </div>
     </div>
 
     <!-- Text -->
     <div class="fade-1 space-y-3">
-      <p class="text-gold-300 text-xs font-medium tracking-widest uppercase">Payment Proof Received</p>
+      <p class="text-purple-deep text-xs font-medium tracking-widest uppercase">Payment Proof Received</p>
       <h1 class="font-serif text-5xl lg:text-6xl font-bold leading-tight">
-        You're All <span class="shimmer-gold">Booked In!</span>
+        You're All <span class="shimmer-text">Booked In!</span>
       </h1>
-      <p class="text-gray-400 text-lg leading-relaxed max-w-lg mx-auto">
-        Thank you! We'll verify your payment and send a confirmation to your email within a few hours. 💅
+      <p class="text-inkmed text-lg leading-relaxed max-w-lg mx-auto">
+        Thank you! We'll verify your payment and send a confirmation to your email within a few hours. <i class="fas fa-gem"></i>
       </p>
     </div>
 
@@ -56,78 +56,78 @@
     <div class="fade-2 flex items-start justify-center max-w-sm mx-auto">
       {% for label in progress_steps %}
       <div class="flex flex-col items-center gap-1.5">
-        <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-black" style="background: linear-gradient(135deg, #D4AF37, #F0C040);">✓</div>
-        <span class="text-xs text-gold-400 font-medium max-w-[55px] text-center">{{ label }}</span>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background: var(--gradient-main);">✓</div>
+        <span class="text-xs text-purple-deep font-medium max-w-[55px] text-center">{{ label }}</span>
       </div>
-      {% if not forloop.last %}<div class="flex-1 h-px mt-4" style="background: linear-gradient(90deg, #D4AF37, rgba(212,175,55,0.4));"></div>{% endif %}
+      {% if not forloop.last %}<div class="flex-1 h-px mt-4" style="background: linear-gradient(90deg, #9c27b0, rgba(156,39,176,0.3));"></div>{% endif %}
       {% endfor %}
     </div>
 
     <!-- CTAs -->
     <div class="fade-3 flex flex-wrap justify-center gap-4">
-      <a href="{% url 'core:home' %}" class="btn-gold inline-flex items-center gap-2 text-black font-bold px-8 py-3.5 rounded-full">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      <a href="{% url 'core:home' %}" class="btn-primary inline-flex items-center gap-2 text-white font-bold px-8 py-3.5 rounded-full">
+        <i class="fas fa-house"></i>
         Back to Home
       </a>
-      <a href="{% url 'core:gallery' %}" class="btn-outline-gold font-medium px-8 py-3.5 rounded-full">Browse More Designs</a>
+      <a href="{% url 'core:gallery' %}" class="btn-outline font-medium px-8 py-3.5 rounded-full">Browse More Designs</a>
     </div>
   </div>
 </section>
 
-<div class="gold-divider"></div>
+<div class="divider-line"></div>
 
 <!-- SUMMARY + WHAT'S NEXT -->
 <section class="py-20 px-6 lg:px-16 relative overflow-hidden">
-  <div class="orb w-72 h-72 bg-purple-800 opacity-15 top-0 right-0"></div>
+  <div class="orb w-72 h-72 bg-purple-soft opacity-15 top-0 right-0"></div>
   <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10">
 
     <!-- Summary -->
     <div class="glass rounded-2xl p-6 lg:p-8 space-y-5">
-      <h2 class="font-serif text-xl font-bold text-white">Booking Summary</h2>
-      <div class="gold-divider"></div>
+      <h2 class="font-serif text-xl font-bold text-inkdark">Booking Summary</h2>
+      <div class="divider-line"></div>
       {% if appointment %}
       <div class="space-y-0">
-        <div class="sum-row"><span class="text-gray-500 text-sm">Service</span><span class="text-white text-sm font-medium">{{ appointment.service }}</span></div>
-        <div class="sum-row"><span class="text-gray-500 text-sm">Date</span><span class="text-white text-sm font-medium">{{ appointment.preferred_date|date:"D, M d, Y" }}</span></div>
-        <div class="sum-row"><span class="text-gray-500 text-sm">Time</span><span class="text-white text-sm font-medium">{{ appointment.preferred_time }}</span></div>
-        <div class="sum-row"><span class="text-gray-500 text-sm">Name</span><span class="text-white text-sm font-medium">{{ appointment.first_name }} {{ appointment.last_name }}</span></div>
-        <div class="sum-row"><span class="text-gray-500 text-sm">Email</span><span class="text-white text-sm font-medium truncate max-w-[55%] text-right">{{ appointment.email }}</span></div>
+        <div class="sum-row"><span class="text-inklight text-sm">Service</span><span class="text-inkdark text-sm font-medium">{{ appointment.service }}</span></div>
+        <div class="sum-row"><span class="text-inklight text-sm">Date</span><span class="text-inkdark text-sm font-medium">{{ appointment.preferred_date|date:"D, M d, Y" }}</span></div>
+        <div class="sum-row"><span class="text-inklight text-sm">Time</span><span class="text-inkdark text-sm font-medium">{{ appointment.preferred_time }}</span></div>
+        <div class="sum-row"><span class="text-inklight text-sm">Name</span><span class="text-inkdark text-sm font-medium">{{ appointment.first_name }} {{ appointment.last_name }}</span></div>
+        <div class="sum-row"><span class="text-inklight text-sm">Email</span><span class="text-inkdark text-sm font-medium truncate max-w-[55%] text-right">{{ appointment.email }}</span></div>
       </div>
       {% else %}
-      <p class="text-gray-500 text-sm">Booking details not available.</p>
+      <p class="text-inklight text-sm">Booking details not available.</p>
       {% endif %}
-      <div class="gold-divider"></div>
-      <div class="flex items-start gap-3 p-3 rounded-xl" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);">
-        <svg class="w-4 h-4 text-gold-300 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
-        <div><p class="text-gray-400 text-xs font-medium mb-0.5">Visit Us At</p><p class="text-gray-300 text-sm leading-relaxed">123 Beauty Lane, Victoria Island<br/>Lagos, Nigeria</p></div>
+      <div class="divider-line"></div>
+      <div class="flex items-start gap-3 p-3 rounded-xl" style="background: rgba(156,39,176,0.05); border: 1px solid rgba(156,39,176,0.15);">
+        <i class="fas fa-location-dot text-purple-deep mt-0.5 shrink-0"></i>
+        <div><p class="text-inklight text-xs font-medium mb-0.5">Visit Us At</p><p class="text-inkmed text-sm leading-relaxed">123 Beauty Lane, Victoria Island<br/>Lagos, Nigeria</p></div>
       </div>
     </div>
 
     <!-- What's Next -->
     <div class="space-y-6">
       <div>
-        <p class="text-gold-300 text-xs font-medium tracking-widest uppercase mb-2">What Happens Next</p>
-        <h2 class="font-serif text-3xl font-bold text-white">We've Got It From Here</h2>
+        <p class="text-purple-deep text-xs font-medium tracking-widest uppercase mb-2">What Happens Next</p>
+        <h2 class="font-serif text-3xl font-bold text-inkdark">We've Got It From Here</h2>
       </div>
       <div class="space-y-4">
-        <div class="next-step glass rounded-2xl p-5 flex items-start gap-4" style="border: 1px solid rgba(212,175,55,0.12);">
-          <div class="text-2xl shrink-0">🔍</div>
-          <div><p class="text-white font-semibold text-sm">We Verify Your Payment</p><p class="text-gray-500 text-xs mt-1">We'll review your receipt and cross-check with our records.</p></div>
+        <div class="next-step glass rounded-2xl p-5 flex items-start gap-4" style="border: 1px solid rgba(156,39,176,0.1);">
+          <i class="fas fa-magnifying-glass text-2xl shrink-0 text-purple-main"></i>
+          <div><p class="text-inkdark font-semibold text-sm">We Verify Your Payment</p><p class="text-inklight text-xs mt-1">We'll review your receipt and cross-check with our records.</p></div>
         </div>
-        <div class="next-step glass rounded-2xl p-5 flex items-start gap-4" style="border: 1px solid rgba(212,175,55,0.12);">
-          <div class="text-2xl shrink-0">📧</div>
-          <div><p class="text-white font-semibold text-sm">You Get a Confirmation Email</p><p class="text-gray-500 text-xs mt-1">Once verified, we'll email your full appointment details.</p></div>
+        <div class="next-step glass rounded-2xl p-5 flex items-start gap-4" style="border: 1px solid rgba(156,39,176,0.1);">
+          <i class="fas fa-envelope text-2xl shrink-0 text-purple-main"></i>
+          <div><p class="text-inkdark font-semibold text-sm">You Get a Confirmation Email</p><p class="text-inklight text-xs mt-1">Once verified, we'll email your full appointment details.</p></div>
         </div>
-        <div class="next-step glass rounded-2xl p-5 flex items-start gap-4" style="border: 1px solid rgba(212,175,55,0.12);">
-          <div class="text-2xl shrink-0">💅</div>
-          <div><p class="text-white font-semibold text-sm">Show Up & Get Glammed!</p><p class="text-gray-500 text-xs mt-1">Arrive at your time and let us do what we do best. See you soon!</p></div>
+        <div class="next-step glass rounded-2xl p-5 flex items-start gap-4" style="border: 1px solid rgba(156,39,176,0.1);">
+          <i class="fas fa-gem text-2xl shrink-0 text-pink-main"></i>
+          <div><p class="text-inkdark font-semibold text-sm">Show Up & Get Glammed!</p><p class="text-inklight text-xs mt-1">Arrive at your time and let us do what we do best. See you soon!</p></div>
         </div>
       </div>
-      <div class="p-5 rounded-2xl space-y-3" style="background: linear-gradient(135deg, rgba(45,10,78,0.5), rgba(13,13,20,0.8)); border: 1px solid rgba(139,92,246,0.25);">
-        <p class="text-purple-300 text-sm font-semibold">Need help?</p>
+      <div class="p-5 rounded-2xl space-y-3" style="background: var(--gradient-soft); border: 1px solid rgba(156,39,176,0.2);">
+        <p class="text-purple-deep text-sm font-semibold">Need help?</p>
         <div class="flex flex-wrap gap-3">
-          <a href="mailto:hello@daisyglams.com" class="flex items-center gap-2 text-xs text-gold-300 border border-gold-400/30 rounded-full px-3 py-1.5 hover:border-gold-400/60 transition-colors">
-            ✉ Email Us
+          <a href="mailto:hello@daisyglams.com" class="flex items-center gap-2 text-xs text-purple-deep border border-purple-main/30 rounded-full px-3 py-1.5 hover:border-purple-main/60 transition-colors">
+            <i class="fas fa-envelope"></i> Email Us
           </a>
         </div>
       </div>
@@ -141,7 +141,7 @@
 {% block extra_scripts %}
 <script>
   function launchConfetti() {
-    const colors = ['#D4AF37','#F0C040','#8B5CF6','#A78BFA','#ffffff','#B8860B'];
+    const colors = ['#d63384','#ff69b4','#9c27b0','#ce93d8','#ffffff','#6a1b9a'];
     const container = document.getElementById('confetti-container');
     for (let i = 0; i < 70; i++) {
       const piece = document.createElement('div');
