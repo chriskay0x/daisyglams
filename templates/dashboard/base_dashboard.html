@@ -5,50 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}Dashboard - Daisyglams{% endblock %}</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="..\static\images\Daisy_Logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            gold: { 300: '#F0C040', 400: '#D4AF37', 500: '#B8860B' },
-            purple: { 900: '#1A0533', 800: '#2D0A4E', 700: '#4C1D95', 600: '#6B21A8', 500: '#8B5CF6', 400: '#A78BFA', 300: '#C4B5FD' },
+            pink: { light: '#fff0f5', soft: '#ffcce0', main: '#ff69b4', deep: '#d63384' },
+            purple: { light: '#f3e5f5', soft: '#ce93d8', main: '#9c27b0', deep: '#6a1b9a' },
+            inkdark: '#2d1b4e', inkmed: '#5d4e6d', inklight: '#9b8aa5',
           },
           fontFamily: {
-            serif: ['Cormorant Garamond', 'serif'],
-            sans: ['Outfit', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Poppins', 'sans-serif'],
           },
         }
       }
     }
   </script>
   <style>
-    body { background-color: #0D0D14; font-family: 'Outfit', sans-serif; }
-    .text-gold-gradient { background: linear-gradient(135deg, #F0C040 0%, #D4AF37 40%, #F0C040 70%, #B8860B 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .gold-divider { height: 1px; background: linear-gradient(90deg, transparent, #D4AF37, transparent); }
-    .glass { background: rgba(255,255,255,0.04); backdrop-filter: blur(12px); border: 1px solid rgba(212,175,55,0.15); }
+    body { background-color: #faf8ff; font-family: 'Poppins', sans-serif; }
+    .text-gradient { background: linear-gradient(135deg, #ff69b4 0%, #9c27b0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .divider-line { height: 1px; background: linear-gradient(90deg, transparent, #ce93d8, transparent); }
+    .glass { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); border: 1px solid rgba(156,39,176,0.12); }
     ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #0D0D14; }
-    ::-webkit-scrollbar-thumb { background: #6B21A8; border-radius: 3px; }
+    ::-webkit-scrollbar-track { background: #fff0f5; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #ff69b4, #9c27b0); border-radius: 3px; }
 
     /* Sidebar */
-    .sidebar { background: linear-gradient(180deg, #0D0D14 0%, #1A0533 100%); border-right: 1px solid rgba(212,175,55,0.12); }
-    .nav-link { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 12px; color: #6b7280; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; }
-    .nav-link:hover { background: rgba(212,175,55,0.08); color: #F0C040; }
-    .nav-link.active { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(107,33,168,0.15)); color: #F0C040; border: 1px solid rgba(212,175,55,0.2); }
+    .sidebar { background: linear-gradient(180deg, #ffffff 0%, #f3e5f5 100%); border-right: 1px solid rgba(156,39,176,0.12); }
+    .nav-link { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 12px; color: #5d4e6d; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; }
+    .nav-link:hover { background: rgba(156,39,176,0.08); color: #9c27b0; }
+    .nav-link.active { background: linear-gradient(135deg, rgba(255,105,180,0.15), rgba(156,39,176,0.15)); color: #6a1b9a; border: 1px solid rgba(156,39,176,0.2); }
     .nav-link svg { width: 18px; height: 18px; flex-shrink: 0; }
 
     /* Cards */
-    .dash-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.12); border-radius: 16px; padding: 20px; transition: all 0.3s; }
-    .dash-card:hover { border-color: rgba(212,175,55,0.3); }
+    .dash-card { background: rgba(255,255,255,0.85); border: 1px solid rgba(156,39,176,0.12); border-radius: 16px; padding: 20px; transition: all 0.3s; box-shadow: 0 4px 20px rgba(156,39,176,0.06); }
+    .dash-card:hover { border-color: rgba(156,39,176,0.3); }
 
     /* Badge */
     .badge { font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 999px; }
-    .badge-pending { background: rgba(234,179,8,0.15); color: #fbbf24; border: 1px solid rgba(234,179,8,0.3); }
-    .badge-confirmed { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
-    .badge-completed { background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
-    .badge-cancelled { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+    .badge-pending { background: rgba(234,179,8,0.15); color: #a16207; border: 1px solid rgba(234,179,8,0.35); }
+    .badge-confirmed { background: rgba(34,197,94,0.15); color: #15803d; border: 1px solid rgba(34,197,94,0.35); }
+    .badge-completed { background: rgba(156,39,176,0.15); color: #6a1b9a; border: 1px solid rgba(156,39,176,0.35); }
+    .badge-cancelled { background: rgba(239,68,68,0.15); color: #b91c1c; border: 1px solid rgba(239,68,68,0.35); }
 
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     .fade-up { animation: fadeInUp 0.5s ease-out forwards; }
@@ -56,7 +57,7 @@
     {% block extra_styles %}{% endblock %}
   </style>
 </head>
-<body class="text-white">
+<body class="text-inkdark">
 
   <div class="flex h-screen overflow-hidden">
 
@@ -65,15 +66,13 @@
       <!-- Logo -->
       <div class="p-6 pb-4">
         <a href="{% url 'dashboard:overview' %}" class="flex items-center gap-2">
-          <div class="w-9 h-9 rounded-full">
-            <img src="..\static\images\Daisy_Logo.png" alt="Daisy Logo">
-          </div>
-          <span class="font-serif text-xl"><span class="text-gold-gradient font-bold">Daisy</span><span class="text-white">glams</span></span>
+          <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background: linear-gradient(135deg, #ff69b4, #9c27b0);">D</div>
+          <span class="font-serif text-xl"><span class="text-gradient font-bold">Daisy</span><span class="text-inkdark">glams</span></span>
         </a>
-        <p class="text-gray-600 text-xs mt-1 ml-11">Admin Dashboard</p>
+        <p class="text-inklight text-xs mt-1 ml-11">Admin Dashboard</p>
       </div>
 
-      <div class="gold-divider mx-6 mb-4"></div>
+      <div class="divider-line mx-6 mb-4"></div>
 
       <!-- Nav Links -->
       <nav class="flex-1 px-4 space-y-1">
@@ -111,12 +110,12 @@
 
       <!-- Bottom -->
       <div class="p-4 space-y-3">
-        <div class="gold-divider"></div>
+        <div class="divider-line"></div>
         <a href="{% url 'core:home' %}" target="_blank" class="nav-link text-xs">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           View Live Site
         </a>
-        <a href="{% url 'dashboard:logout' %}" class="nav-link text-red-500 hover:bg-red-500/10 hover:text-red-400">
+        <a href="{% url 'dashboard:logout' %}" class="nav-link text-red-500 hover:bg-red-500/10 hover:text-red-500">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
           Logout
         </a>
@@ -127,20 +126,20 @@
     <div class="flex-1 flex flex-col overflow-hidden">
 
       <!-- Top bar -->
-      <header class="flex items-center justify-between px-6 py-4 border-b border-white/5" style="background: rgba(13,13,20,0.8); backdrop-filter: blur(12px);">
+      <header class="flex items-center justify-between px-6 py-4 border-b border-purple-main/10" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(12px);">
         <div>
-          <h1 class="font-serif text-xl font-bold text-white">{% block page_title %}Dashboard{% endblock %}</h1>
-          <p class="text-gray-600 text-xs mt-0.5">{% block page_subtitle %}Welcome back!{% endblock %}</p>
+          <h1 class="font-serif text-xl font-bold text-inkdark">{% block page_title %}Dashboard{% endblock %}</h1>
+          <p class="text-inklight text-xs mt-0.5">{% block page_subtitle %}Welcome back!{% endblock %}</p>
         </div>
         <div class="flex items-center gap-3">
           <!-- Mobile menu btn -->
-          <button id="mob-menu-btn" class="lg:hidden text-gray-400 hover:text-gold-300 transition-colors">
+          <button id="mob-menu-btn" class="lg:hidden text-inkmed hover:text-purple-main transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
           <!-- Admin badge -->
           <div class="hidden sm:flex items-center gap-2 glass rounded-full px-3 py-1.5">
-            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-purple-600 to-gold-400 flex items-center justify-center text-black font-bold text-xs">D</div>
-            <span class="text-xs text-gray-300">{{ request.user.username }}</span>
+            <div class="w-6 h-6 rounded-full flex items-center justify-center text-white font-bold text-xs" style="background: linear-gradient(135deg, #ff69b4, #9c27b0);">D</div>
+            <span class="text-xs text-inkmed">{{ request.user.username }}</span>
           </div>
         </div>
       </header>
@@ -151,11 +150,11 @@
         {% for message in messages %}
         <div class="flex items-center gap-3 p-3 rounded-xl mb-2 text-sm
           {% if message.tags == 'error' %}
-            text-red-300" style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);"
+            text-red-600" style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25);"
           {% else %}
-            text-green-300" style="background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25);"
+            text-green-700" style="background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.25);"
           {% endif %}>
-          {% if message.tags == 'error' %}⚠{% else %}✓{% endif %}
+          {% if message.tags == 'error' %}<i class="fas fa-triangle-exclamation"></i>{% else %}<i class="fas fa-circle-check"></i>{% endif %}
           {{ message }}
         </div>
         {% endfor %}
@@ -172,25 +171,25 @@
 
   <!-- Mobile sidebar overlay -->
   <div id="mob-sidebar" class="fixed inset-0 z-50 hidden lg:hidden">
-    <div class="absolute inset-0 bg-black/60" onclick="closeMobMenu()"></div>
+    <div class="absolute inset-0 bg-inkdark/50" onclick="closeMobMenu()"></div>
     <div class="absolute left-0 top-0 bottom-0 w-64 sidebar flex flex-col overflow-y-auto">
       <div class="p-6 pb-4">
         <div class="flex items-center justify-between">
-          <span class="font-serif text-xl"><span class="text-gold-gradient font-bold">Daisy</span><span class="text-white">glams</span></span>
-          <button onclick="closeMobMenu()" class="text-gray-500 hover:text-white">✕</button>
+          <span class="font-serif text-xl"><span class="text-gradient font-bold">Daisy</span><span class="text-inkdark">glams</span></span>
+          <button onclick="closeMobMenu()" class="text-inklight hover:text-inkdark">✕</button>
         </div>
       </div>
-      <div class="gold-divider mx-6 mb-4"></div>
+      <div class="divider-line mx-6 mb-4"></div>
       <nav class="flex-1 px-4 space-y-1">
-        <a href="{% url 'dashboard:overview' %}" class="nav-link" onclick="closeMobMenu()">📊 Overview</a>
-        <a href="{% url 'dashboard:bookings' %}" class="nav-link" onclick="closeMobMenu()">📅 Bookings</a>
-        <a href="{% url 'dashboard:payments' %}" class="nav-link" onclick="closeMobMenu()">💳 Payments</a>
-        <a href="{% url 'dashboard:gallery' %}" class="nav-link" onclick="closeMobMenu()">🖼️ Gallery</a>
-        <a href="{% url 'dashboard:services' %}" class="nav-link" onclick="closeMobMenu()">💅 Services</a>
-        <a href="{% url 'dashboard:settings' %}" class="nav-link" onclick="closeMobMenu()">⚙️ Settings</a>
+        <a href="{% url 'dashboard:overview' %}" class="nav-link" onclick="closeMobMenu()"><i class="fas fa-chart-line"></i> Overview</a>
+        <a href="{% url 'dashboard:bookings' %}" class="nav-link" onclick="closeMobMenu()"><i class="fas fa-calendar-check"></i> Bookings</a>
+        <a href="{% url 'dashboard:payments' %}" class="nav-link" onclick="closeMobMenu()"><i class="fas fa-credit-card"></i> Payments</a>
+        <a href="{% url 'dashboard:gallery' %}" class="nav-link" onclick="closeMobMenu()"><i class="fas fa-images"></i> Gallery</a>
+        <a href="{% url 'dashboard:services' %}" class="nav-link" onclick="closeMobMenu()"><i class="fas fa-spa"></i> Services</a>
+        <a href="{% url 'dashboard:settings' %}" class="nav-link" onclick="closeMobMenu()"><i class="fas fa-gear"></i> Settings</a>
       </nav>
       <div class="p-4">
-        <a href="{% url 'dashboard:logout' %}" class="nav-link text-red-500">🚪 Logout</a>
+        <a href="{% url 'dashboard:logout' %}" class="nav-link text-red-500"><i class="fas fa-right-from-bracket"></i> Logout</a>
       </div>
     </div>
   </div>

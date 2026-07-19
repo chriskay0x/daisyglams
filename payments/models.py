@@ -9,7 +9,7 @@ class PaymentProof(models.Model):
         Appointment, on_delete=models.CASCADE, related_name='payment'
     )
     sender_name = models.CharField(max_length=100)
-    receipt = models.ImageField(upload_to='receipts/')
+    receipt = models.ImageField(upload_to='receipts/', blank=True, null=True)
     note = models.CharField(max_length=255, blank=True)
     is_verified = models.BooleanField(default=False)
     submitted_at = models.DateTimeField(auto_now_add=True)

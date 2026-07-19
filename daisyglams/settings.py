@@ -152,7 +152,7 @@ STORAGES = {
 LOGIN_URL = '/dashboard/login/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Email config (Gmail SMTP)

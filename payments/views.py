@@ -21,20 +21,16 @@ def payment(request):
     account = BusinessAccount.objects.first()
 
     if request.method == 'POST':
-        form = PaymentProofForm(request.POST, request.FILES)
+        existing_proof = PaymentProof.objects.filter(appointment=appointment).first()
+        form = PaymentProofForm(request.POST, request.FILES, instance=existing_proof)  # ✅ Pass instance
+
         if form.is_valid():
-            proof, created = PaymentProof.objects.update_or_create(
-                appointment=appointment,
-                defaults={
-                    'sender_name': form.cleaned_data['sender_name'],
-                    'receipt': form.cleaned_data['receipt'],
-                    'note': form.cleaned_data['note'],
-                }
-            )
+            proof = form.save(commit=False)
+            proof.appointment = appointment
+            proof.save()  # ✅ Properly saves file to disk
 
             dashboard_url = request.build_absolute_uri('/dashboard/payments/')
 
-            # Send email notification to admin
             try:
                 send_mail(
                     subject=f'💳 New Payment Proof — {appointment.first_name} {appointment.last_name}',

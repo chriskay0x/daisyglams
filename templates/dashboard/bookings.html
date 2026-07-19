@@ -14,9 +14,9 @@
     <a href="?status={{ status }}"
        class="px-4 py-2 rounded-full text-xs font-medium transition-all
        {% if active_filter == status %}
-         text-black" style="background: linear-gradient(135deg, #D4AF37, #F0C040);"
+         text-white" style="background: linear-gradient(135deg, #ff69b4, #9c27b0);"
        {% else %}
-         text-gray-400 hover:text-gold-300" style="border: 1px solid rgba(212,175,55,0.2);"
+         text-inkmed hover:text-purple-main" style="border: 1px solid rgba(156,39,176,0.2);"
        {% endif %}>
       {{ label }}
     </a>
@@ -28,26 +28,26 @@
     <div class="overflow-x-auto">
       <table class="w-full text-sm">
         <thead>
-          <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-            <th class="text-left text-xs text-gray-500 uppercase tracking-widest font-medium px-5 py-4">Customer</th>
-            <th class="text-left text-xs text-gray-500 uppercase tracking-widest font-medium px-5 py-4">Service</th>
-            <th class="text-left text-xs text-gray-500 uppercase tracking-widest font-medium px-5 py-4">Date & Time</th>
-            <th class="text-left text-xs text-gray-500 uppercase tracking-widest font-medium px-5 py-4">Status</th>
-            <th class="text-left text-xs text-gray-500 uppercase tracking-widest font-medium px-5 py-4">Action</th>
+          <tr style="border-bottom: 1px solid rgba(156,39,176,0.1);">
+            <th class="text-left text-xs text-inklight uppercase tracking-widest font-medium px-5 py-4">Customer</th>
+            <th class="text-left text-xs text-inklight uppercase tracking-widest font-medium px-5 py-4">Service</th>
+            <th class="text-left text-xs text-inklight uppercase tracking-widest font-medium px-5 py-4">Date & Time</th>
+            <th class="text-left text-xs text-inklight uppercase tracking-widest font-medium px-5 py-4">Status</th>
+            <th class="text-left text-xs text-inklight uppercase tracking-widest font-medium px-5 py-4">Action</th>
           </tr>
         </thead>
         <tbody>
           {% for booking in bookings %}
-          <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);" class="hover:bg-white/[0.02] transition-colors">
+          <tr style="border-bottom: 1px solid rgba(156,39,176,0.06);" class="hover:bg-purple-light/40 transition-colors">
             <td class="px-5 py-4">
-              <p class="text-white font-medium">{{ booking.first_name }} {{ booking.last_name }}</p>
-              <p class="text-gray-500 text-xs mt-0.5">{{ booking.email }}</p>
-              <p class="text-gray-600 text-xs">{{ booking.phone }}</p>
+              <p class="text-inkdark font-medium">{{ booking.first_name }} {{ booking.last_name }}</p>
+              <p class="text-inklight text-xs mt-0.5">{{ booking.email }}</p>
+              <p class="text-inklight text-xs">{{ booking.phone }}</p>
             </td>
-            <td class="px-5 py-4 text-gray-300">{{ booking.service }}</td>
+            <td class="px-5 py-4 text-inkmed">{{ booking.service }}</td>
             <td class="px-5 py-4">
-              <p class="text-gray-300">{{ booking.preferred_date|date:"M d, Y" }}</p>
-              <p class="text-gray-500 text-xs mt-0.5">{{ booking.preferred_time }}</p>
+              <p class="text-inkmed">{{ booking.preferred_date|date:"M d, Y" }}</p>
+              <p class="text-inklight text-xs mt-0.5">{{ booking.preferred_time }}</p>
             </td>
             <td class="px-5 py-4">
               <span class="badge badge-{{ booking.status }}">{{ booking.get_status_display }}</span>
@@ -56,13 +56,13 @@
               <form method="POST" action="{% url 'dashboard:update_booking' booking.pk %}">
                 {% csrf_token %}
                 <div class="flex items-center gap-2">
-                  <select name="status" class="text-xs rounded-lg px-2 py-1.5 outline-none" style="background: rgba(255,255,255,0.07); border: 1px solid rgba(212,175,55,0.2); color: #fff;">
+                  <select name="status" class="text-xs rounded-lg px-2 py-1.5 outline-none" style="background: rgba(255,255,255,0.8); border: 1px solid rgba(156,39,176,0.2); color: #2d1b4e;">
                     <option value="pending" {% if booking.status == 'pending' %}selected{% endif %}>Pending</option>
                     <option value="confirmed" {% if booking.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
                     <option value="completed" {% if booking.status == 'completed' %}selected{% endif %}>Completed</option>
                     <option value="cancelled" {% if booking.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
                   </select>
-                  <button type="submit" class="text-xs text-black font-semibold px-3 py-1.5 rounded-lg transition-all" style="background: linear-gradient(135deg, #D4AF37, #F0C040);">
+                  <button type="submit" class="text-xs text-white font-semibold px-3 py-1.5 rounded-lg transition-all" style="background: linear-gradient(135deg, #ff69b4, #9c27b0);">
                     Save
                   </button>
                 </div>
@@ -71,8 +71,8 @@
           </tr>
           {% empty %}
           <tr>
-            <td colspan="5" class="text-center text-gray-600 py-16">
-              <div class="text-3xl mb-3">📅</div>
+            <td colspan="5" class="text-center text-inklight py-16">
+              <i class="fas fa-calendar-days text-3xl mb-3 text-purple-soft"></i>
               <p>No bookings found.</p>
             </td>
           </tr>

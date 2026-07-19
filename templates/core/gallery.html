@@ -13,19 +13,19 @@
 
 <!-- HEADER -->
 <section class="pt-36 pb-12 px-6 lg:px-16 relative overflow-hidden">
-  <div class="orb w-80 h-80 bg-purple-700 opacity-20 top-0 right-0"></div>
+  <div class="orb w-80 h-80 bg-purple-main opacity-20 top-0 right-0"></div>
   <div class="max-w-7xl mx-auto text-center space-y-5">
-    <div class="inline-flex items-center gap-2 text-gold-300 text-xs font-medium tracking-widest uppercase">
-      <div class="w-8 h-px bg-gold-400"></div>Our Portfolio</a><div class="w-8 h-px bg-gold-400"></div>
+    <div class="inline-flex items-center gap-2 text-purple-deep text-xs font-medium tracking-widest uppercase">
+      <div class="w-8 h-px bg-purple-main"></div>Our Portfolio<div class="w-8 h-px bg-purple-main"></div>
     </div>
     <h1 class="font-serif text-5xl lg:text-6xl font-bold">
-      <span class="text-white">Nail </span><span class="text-gold-gradient">Gallery</span>
+      <span class="text-inkdark">Nail </span><span class="text-gradient">Gallery</span>
     </h1>
-    <p class="text-gray-400 text-lg max-w-xl mx-auto">Browse our latest designs and find the perfect look for your next appointment.</p>
+    <p class="text-inkmed text-lg max-w-xl mx-auto">Browse our latest designs and find the perfect look for your next appointment.</p>
   </div>
 </section>
 
-<div class="gold-divider"></div>
+<div class="divider-line"></div>
 
 <!-- FILTER TABS -->
 <section class="py-8 px-6 lg:px-16">
@@ -35,9 +35,9 @@
       <a href="?category={{ slug }}"
          class="filter-btn px-5 py-2 rounded-full text-sm font-medium
          {% if active_category == slug %}
-           text-black" style="background: linear-gradient(135deg, #D4AF37, #F0C040);"
+           text-white" style="background: var(--gradient-main);"
          {% else %}
-           text-gray-400 hover:text-gold-300" style="border: 1px solid rgba(212,175,55,0.2); background: rgba(255,255,255,0.03);"
+           text-inkmed hover:text-purple-main" style="border: 1px solid rgba(156,39,176,0.2); background: rgba(255,255,255,0.5);"
          {% endif %}>
         {{ label }}
       </a>
@@ -52,13 +52,13 @@
     {% if designs %}
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
       {% for design in designs %}
-      <div class="design-card group relative overflow-hidden rounded-2xl aspect-square" style="border: 1px solid rgba(212,175,55,0.1);">
+      <div class="design-card group relative overflow-hidden rounded-2xl aspect-square" style="border: 1px solid rgba(156,39,176,0.1);">
         <img src="{{ design.image.url }}" alt="{{ design.title }}"
              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+        <div class="absolute inset-0 bg-gradient-to-t from-purple-deep/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
           <p class="text-white text-sm font-semibold">{{ design.title }}</p>
-          <p class="text-gold-300 text-xs mt-0.5">{{ design.get_category_display }}</p>
-          <a href="{% url 'bookings:booking' %}" class="mt-2 text-xs text-black font-semibold px-3 py-1.5 rounded-full inline-block w-fit" style="background: linear-gradient(135deg, #D4AF37, #F0C040);">
+          <p class="text-pink-soft text-xs mt-0.5">{{ design.get_category_display }}</p>
+          <a href="{% url 'bookings:booking' %}" class="mt-2 text-xs text-white font-semibold px-3 py-1.5 rounded-full inline-block w-fit" style="background: var(--gradient-main);">
             Book this look
           </a>
         </div>
@@ -67,22 +67,22 @@
     </div>
     {% else %}
     <div class="text-center py-24">
-      <div class="text-5xl mb-4">🖼️</div>
-      <p class="text-gray-500 text-lg">No designs in this category yet.</p>
-      <a href="{% url 'core:gallery' %}" class="text-gold-300 text-sm hover:underline mt-2 inline-block">View all designs →</a>
+      <i class="fas fa-images text-5xl mb-4 text-purple-soft"></i>
+      <p class="text-inklight text-lg">No designs in this category yet.</p>
+      <a href="{% url 'core:gallery' %}" class="text-purple-deep text-sm hover:underline mt-2 inline-block">View all designs →</a>
     </div>
     {% endif %}
   </div>
 </section>
 
 <!-- BOOK CTA -->
-<div class="gold-divider"></div>
+<div class="divider-line"></div>
 <section class="py-20 px-6 lg:px-16 text-center">
   <div class="max-w-2xl mx-auto space-y-5">
-    <h2 class="font-serif text-4xl font-bold text-white">Seen something you love?</h2>
-    <p class="text-gray-400">Book an appointment and we'll bring your dream nails to life!</p>
-    <a href="{% url 'bookings:booking' %}" class="btn-gold inline-flex items-center gap-2 text-black font-bold px-8 py-4 rounded-full">
-      Book It Now 💅
+    <h2 class="font-serif text-4xl font-bold text-inkdark">Seen something you love?</h2>
+    <p class="text-inkmed">Book an appointment and we'll bring your dream nails to life!</p>
+    <a href="{% url 'bookings:booking' %}" class="btn-primary inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full">
+      Book It Now <i class="fas fa-gem"></i>
     </a>
   </div>
 </section>

@@ -12,27 +12,27 @@
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 
     <div class="dash-card">
-      <p class="text-gray-500 text-xs uppercase tracking-widest font-medium mb-2">Total Bookings</p>
-      <p class="text-3xl font-bold font-serif text-white">{{ total_bookings }}</p>
-      <p class="text-gray-600 text-xs mt-1">All time</p>
+      <p class="text-inklight text-xs uppercase tracking-widest font-medium mb-2">Total Bookings</p>
+      <p class="text-3xl font-bold font-serif text-inkdark">{{ total_bookings }}</p>
+      <p class="text-inklight text-xs mt-1">All time</p>
     </div>
 
     <div class="dash-card">
-      <p class="text-gray-500 text-xs uppercase tracking-widest font-medium mb-2">Pending</p>
-      <p class="text-3xl font-bold font-serif text-yellow-400">{{ pending_bookings }}</p>
-      <p class="text-gray-600 text-xs mt-1">Awaiting confirmation</p>
+      <p class="text-inklight text-xs uppercase tracking-widest font-medium mb-2">Pending</p>
+      <p class="text-3xl font-bold font-serif text-yellow-600">{{ pending_bookings }}</p>
+      <p class="text-inklight text-xs mt-1">Awaiting confirmation</p>
     </div>
 
     <div class="dash-card">
-      <p class="text-gray-500 text-xs uppercase tracking-widest font-medium mb-2">Confirmed</p>
-      <p class="text-3xl font-bold font-serif text-green-400">{{ confirmed_bookings }}</p>
-      <p class="text-gray-600 text-xs mt-1">Ready to go</p>
+      <p class="text-inklight text-xs uppercase tracking-widest font-medium mb-2">Confirmed</p>
+      <p class="text-3xl font-bold font-serif text-green-600">{{ confirmed_bookings }}</p>
+      <p class="text-inklight text-xs mt-1">Ready to go</p>
     </div>
 
-    <div class="dash-card" style="border-color: rgba(239,68,68,0.2);">
-      <p class="text-gray-500 text-xs uppercase tracking-widest font-medium mb-2">Unverified Payments</p>
-      <p class="text-3xl font-bold font-serif text-red-400">{{ pending_payments }}</p>
-      <p class="text-gray-600 text-xs mt-1">Need your review</p>
+    <div class="dash-card" style="border-color: rgba(239,68,68,0.25);">
+      <p class="text-inklight text-xs uppercase tracking-widest font-medium mb-2">Unverified Payments</p>
+      <p class="text-3xl font-bold font-serif text-red-500">{{ pending_payments }}</p>
+      <p class="text-inklight text-xs mt-1">Need your review</p>
     </div>
 
   </div>
@@ -43,44 +43,44 @@
     <!-- Recent Bookings -->
     <div class="dash-card space-y-4">
       <div class="flex items-center justify-between">
-        <h2 class="font-serif text-lg font-bold text-white">Recent Bookings</h2>
-        <a href="{% url 'dashboard:bookings' %}" class="text-xs text-gold-300 hover:underline">View all →</a>
+        <h2 class="font-serif text-lg font-bold text-inkdark">Recent Bookings</h2>
+        <a href="{% url 'dashboard:bookings' %}" class="text-xs text-purple-deep hover:underline">View all →</a>
       </div>
-      <div class="gold-divider"></div>
+      <div class="divider-line"></div>
       {% if recent_bookings %}
         <div class="space-y-3">
           {% for booking in recent_bookings %}
-          <div class="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+          <div class="flex items-center justify-between py-2 border-b border-purple-main/10 last:border-0">
             <div>
-              <p class="text-white text-sm font-medium">{{ booking.first_name }} {{ booking.last_name }}</p>
-              <p class="text-gray-500 text-xs mt-0.5">{{ booking.service }} · {{ booking.preferred_date }}</p>
+              <p class="text-inkdark text-sm font-medium">{{ booking.first_name }} {{ booking.last_name }}</p>
+              <p class="text-inklight text-xs mt-0.5">{{ booking.service }} · {{ booking.preferred_date }}</p>
             </div>
             <span class="badge badge-{{ booking.status }}">{{ booking.get_status_display }}</span>
           </div>
           {% endfor %}
         </div>
       {% else %}
-        <p class="text-gray-600 text-sm text-center py-6">No bookings yet.</p>
+        <p class="text-inklight text-sm text-center py-6">No bookings yet.</p>
       {% endif %}
     </div>
 
     <!-- Pending Payments -->
     <div class="dash-card space-y-4">
       <div class="flex items-center justify-between">
-        <h2 class="font-serif text-lg font-bold text-white">Pending Payments</h2>
-        <a href="{% url 'dashboard:payments' %}" class="text-xs text-gold-300 hover:underline">View all →</a>
+        <h2 class="font-serif text-lg font-bold text-inkdark">Pending Payments</h2>
+        <a href="{% url 'dashboard:payments' %}" class="text-xs text-purple-deep hover:underline">View all →</a>
       </div>
-      <div class="gold-divider"></div>
+      <div class="divider-line"></div>
       {% if recent_payments %}
         <div class="space-y-3">
           {% for proof in recent_payments %}
-          <div class="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+          <div class="flex items-center justify-between py-2 border-b border-purple-main/10 last:border-0">
             <div>
-              <p class="text-white text-sm font-medium">{{ proof.appointment.first_name }} {{ proof.appointment.last_name }}</p>
-              <p class="text-gray-500 text-xs mt-0.5">{{ proof.sender_name }} · {{ proof.submitted_at|date:"M d, Y" }}</p>
+              <p class="text-inkdark text-sm font-medium">{{ proof.appointment.first_name }} {{ proof.appointment.last_name }}</p>
+              <p class="text-inklight text-xs mt-0.5">{{ proof.sender_name }} · {{ proof.submitted_at|date:"M d, Y" }}</p>
             </div>
             <a href="{% url 'dashboard:verify_payment' proof.pk %}"
-               class="text-xs text-green-400 border border-green-500/30 rounded-full px-3 py-1 hover:border-green-500/60 transition-colors">
+               class="text-xs text-green-700 border border-green-600/30 rounded-full px-3 py-1 hover:border-green-600/60 transition-colors">
               Verify
             </a>
           </div>
@@ -88,7 +88,7 @@
         </div>
       {% else %}
         <div class="text-center py-6">
-          <p class="text-gray-600 text-sm">No pending payments 🎉</p>
+          <p class="text-inklight text-sm">No pending payments <i class="fas fa-champagne-glasses"></i></p>
         </div>
       {% endif %}
     </div>
@@ -97,23 +97,23 @@
 
   <!-- Quick Actions -->
   <div>
-    <h2 class="font-serif text-lg font-bold text-white mb-4">Quick Actions</h2>
+    <h2 class="font-serif text-lg font-bold text-inkdark mb-4">Quick Actions</h2>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-      <a href="{% url 'dashboard:gallery' %}" class="dash-card text-center hover:border-gold-400/40 transition-all group">
-        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">🖼️</div>
-        <p class="text-sm text-gray-300 font-medium">Upload Design</p>
+      <a href="{% url 'dashboard:gallery' %}" class="dash-card text-center hover:border-purple-main/40 transition-all group">
+        <i class="fas fa-images text-2xl mb-2 text-purple-main group-hover:scale-110 transition-transform inline-block"></i>
+        <p class="text-sm text-inkmed font-medium">Upload Design</p>
       </a>
-      <a href="{% url 'dashboard:services' %}" class="dash-card text-center hover:border-gold-400/40 transition-all group">
-        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">💅</div>
-        <p class="text-sm text-gray-300 font-medium">Add Service</p>
+      <a href="{% url 'dashboard:services' %}" class="dash-card text-center hover:border-purple-main/40 transition-all group">
+        <i class="fas fa-spa text-2xl mb-2 text-pink-main group-hover:scale-110 transition-transform inline-block"></i>
+        <p class="text-sm text-inkmed font-medium">Add Service</p>
       </a>
-      <a href="{% url 'dashboard:payments' %}" class="dash-card text-center hover:border-gold-400/40 transition-all group">
-        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">💳</div>
-        <p class="text-sm text-gray-300 font-medium">Verify Payment</p>
+      <a href="{% url 'dashboard:payments' %}" class="dash-card text-center hover:border-purple-main/40 transition-all group">
+        <i class="fas fa-credit-card text-2xl mb-2 text-purple-main group-hover:scale-110 transition-transform inline-block"></i>
+        <p class="text-sm text-inkmed font-medium">Verify Payment</p>
       </a>
-      <a href="{% url 'dashboard:settings' %}" class="dash-card text-center hover:border-gold-400/40 transition-all group">
-        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">⚙️</div>
-        <p class="text-sm text-gray-300 font-medium">Update Settings</p>
+      <a href="{% url 'dashboard:settings' %}" class="dash-card text-center hover:border-purple-main/40 transition-all group">
+        <i class="fas fa-gear text-2xl mb-2 text-pink-main group-hover:scale-110 transition-transform inline-block"></i>
+        <p class="text-sm text-inkmed font-medium">Update Settings</p>
       </a>
     </div>
   </div>

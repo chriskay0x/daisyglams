@@ -4,21 +4,20 @@
 {% block meta_description %}Complete your Daisyglams booking by making payment and uploading your proof.{% endblock %}
 
 {% block extra_styles %}
-.form-input { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 12px 16px; color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.9rem; outline: none; transition: all 0.3s; }
-.form-input:focus { border-color: rgba(212,175,55,0.6); box-shadow: 0 0 0 3px rgba(212,175,55,0.08); background: rgba(255,255,255,0.06); }
-.form-input::placeholder { color: rgba(156,163,175,0.5); }
-.form-label { display: block; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #9ca3af; margin-bottom: 8px; }
-.form-label span { color: #D4AF37; }
-.bank-card { background: linear-gradient(135deg, rgba(45,10,78,0.6), rgba(13,13,20,0.8)); border: 1px solid rgba(212,175,55,0.35); border-radius: 20px; position: relative; overflow: hidden; }
-.bank-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #D4AF37, #F0C040, #D4AF37); }
-.upload-area { border: 2px dashed rgba(212,175,55,0.25); border-radius: 16px; padding: 36px 24px; text-align: center; cursor: pointer; transition: all 0.3s; }
-.upload-area:hover { border-color: rgba(212,175,55,0.55); background: rgba(212,175,55,0.03); }
+.form-input { width: 100%; background: rgba(255,255,255,0.7); border: 1px solid rgba(156,39,176,0.2); border-radius: 12px; padding: 12px 16px; color: var(--text-dark); font-family: 'Poppins', sans-serif; font-size: 0.9rem; outline: none; transition: all 0.3s; }
+.form-input:focus { border-color: rgba(156,39,176,0.5); box-shadow: 0 0 0 3px rgba(156,39,176,0.1); background: #ffffff; }
+.form-input::placeholder { color: var(--text-light); }
+.form-label { display: block; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-medium); margin-bottom: 8px; }
+.form-label span { color: var(--pink-deep); }
+.bank-card { background: var(--gradient-main); border-radius: 20px; position: relative; overflow: hidden; }
+.upload-area { border: 2px dashed rgba(156,39,176,0.25); border-radius: 16px; padding: 36px 24px; text-align: center; cursor: pointer; transition: all 0.3s; background: rgba(255,255,255,0.4); }
+.upload-area:hover { border-color: rgba(156,39,176,0.5); background: rgba(156,39,176,0.04); }
 @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-.submit-btn { background: linear-gradient(90deg, #B8860B, #D4AF37, #F0C040, #D4AF37, #B8860B); background-size: 200% auto; animation: shimmer 3s linear infinite; }
-.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212,175,55,0.5); }
+.submit-btn { background: linear-gradient(90deg, #d63384, #ff69b4, #9c27b0, #ff69b4, #d63384); background-size: 200% auto; animation: shimmer 3s linear infinite; }
+.submit-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-medium); }
 .copy-btn { transition: all 0.2s; }
-.copy-btn.copied { color: #4ade80 !important; }
-.sum-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.copy-btn.copied { color: #16a34a !important; }
+.sum-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid rgba(156,39,176,0.1); }
 .sum-row:last-child { border-bottom: none; }
 {% endblock %}
 
@@ -26,36 +25,36 @@
 
 <!-- HEADER -->
 <section class="pt-36 pb-10 px-6 lg:px-16 relative overflow-hidden">
-  <div class="orb w-72 h-72 bg-purple-700 opacity-20 top-0 right-0"></div>
+  <div class="orb w-72 h-72 bg-purple-main opacity-15 top-0 right-0"></div>
   <div class="max-w-4xl mx-auto text-center space-y-4">
-    <div class="inline-flex items-center gap-2 text-gold-300 text-xs font-medium tracking-widest uppercase">
-      <div class="w-8 h-px bg-gold-400"></div>Almost There<div class="w-8 h-px bg-gold-400"></div>
+    <div class="inline-flex items-center gap-2 text-purple-deep text-xs font-medium tracking-widest uppercase">
+      <div class="w-8 h-px bg-purple-main"></div>Almost There<div class="w-8 h-px bg-purple-main"></div>
     </div>
     <h1 class="font-serif text-5xl lg:text-6xl font-bold">
-      <span class="text-white">Complete Your </span><span class="text-gold-gradient">Payment</span>
+      <span class="text-inkdark">Complete Your </span><span class="text-gradient">Payment</span>
     </h1>
-    <p class="text-gray-400">Transfer to the account below, then upload your payment receipt.</p>
+    <p class="text-inkmed">Transfer to the account below, then upload your payment receipt.</p>
   </div>
 </section>
 
 <!-- PROGRESS STEPS -->
 <section class="pb-8 px-6 lg:px-16">
   <div class="max-w-2xl mx-auto flex items-start">
-    <div class="flex flex-col items-center gap-1.5"><div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-black" style="background: linear-gradient(135deg, #D4AF37, #F0C040);">✓</div><span class="text-xs text-gold-400 font-medium">Booked</span></div>
-    <div class="flex-1 h-px mt-4" style="background: linear-gradient(90deg, #D4AF37, rgba(212,175,55,0.3));"></div>
-    <div class="flex flex-col items-center gap-1.5"><div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background: linear-gradient(135deg, #6B21A8, #8B5CF6); box-shadow: 0 0 16px rgba(139,92,246,0.4);">2</div><span class="text-xs text-purple-300 font-medium">Payment</span></div>
-    <div class="flex-1 h-px mt-4" style="background: rgba(255,255,255,0.08);"></div>
-    <div class="flex flex-col items-center gap-1.5"><div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); color: #D4AF37;">3</div><span class="text-xs text-gray-500">Proof</span></div>
-    <div class="flex-1 h-px mt-4" style="background: rgba(255,255,255,0.08);"></div>
-    <div class="flex flex-col items-center gap-1.5"><div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); color: #D4AF37;">4</div><span class="text-xs text-gray-500">Confirmed</span></div>
+    <div class="flex flex-col items-center gap-1.5"><div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background: var(--gradient-main);">✓</div><span class="text-xs text-purple-deep font-medium">Booked</span></div>
+    <div class="flex-1 h-px mt-4" style="background: linear-gradient(90deg, #9c27b0, rgba(156,39,176,0.3));"></div>
+    <div class="flex flex-col items-center gap-1.5"><div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background: var(--gradient-main); box-shadow: 0 0 16px rgba(156,39,176,0.35);">2</div><span class="text-xs text-purple-deep font-medium">Payment</span></div>
+    <div class="flex-1 h-px mt-4" style="background: rgba(156,39,176,0.15);"></div>
+    <div class="flex flex-col items-center gap-1.5"><div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style="background: rgba(156,39,176,0.1); border: 1px solid rgba(156,39,176,0.3); color: #9c27b0;">3</div><span class="text-xs text-inklight">Proof</span></div>
+    <div class="flex-1 h-px mt-4" style="background: rgba(156,39,176,0.15);"></div>
+    <div class="flex flex-col items-center gap-1.5"><div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style="background: rgba(156,39,176,0.1); border: 1px solid rgba(156,39,176,0.3); color: #9c27b0;">4</div><span class="text-xs text-inklight">Confirmed</span></div>
   </div>
 </section>
 
-<div class="gold-divider"></div>
+<div class="divider-line"></div>
 
 <!-- MAIN -->
 <section class="py-12 pb-24 px-6 lg:px-16 relative overflow-hidden">
-  <div class="orb w-80 h-80 bg-purple-900 opacity-15 bottom-0 right-0"></div>
+  <div class="orb w-80 h-80 bg-pink-soft opacity-15 bottom-0 right-0"></div>
   <div class="max-w-5xl mx-auto grid lg:grid-cols-5 gap-10">
 
     <!-- LEFT -->
@@ -65,41 +64,41 @@
       {% if account %}
       <div class="bank-card p-6 lg:p-8">
         <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.25);">🏦</div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style="background: rgba(255,255,255,0.2);"><i class="fas fa-building-columns text-white"></i></div>
           <div>
             <h2 class="font-serif text-xl font-bold text-white">Bank Transfer Details</h2>
-            <p class="text-gray-500 text-xs">Transfer the exact amount to this account</p>
+            <p class="text-white/70 text-xs">Transfer the exact amount to this account</p>
           </div>
         </div>
         <div class="space-y-3">
-          <div class="flex items-center justify-between p-4 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.1);">
-            <div><p class="text-gray-500 text-xs uppercase tracking-wide font-medium mb-1">Bank Name</p><p class="text-white font-semibold">{{ account.bank_name }}</p></div>
-            <button class="copy-btn text-gray-500 hover:text-gold-300 p-2 rounded-lg transition-colors" onclick="copyText('{{ account.bank_name }}', this)">
+          <div class="flex items-center justify-between p-4 rounded-xl" style="background: rgba(255,255,255,0.12);">
+            <div><p class="text-white/70 text-xs uppercase tracking-wide font-medium mb-1">Bank Name</p><p class="text-white font-semibold">{{ account.bank_name }}</p></div>
+            <button class="copy-btn text-white/70 hover:text-white p-2 rounded-lg transition-colors" onclick="copyText('{{ account.bank_name }}', this)">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
             </button>
           </div>
-          <div class="flex items-center justify-between p-4 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.1);">
-            <div><p class="text-gray-500 text-xs uppercase tracking-wide font-medium mb-1">Account Name</p><p class="text-white font-semibold">{{ account.account_name }}</p></div>
-            <button class="copy-btn text-gray-500 hover:text-gold-300 p-2 rounded-lg transition-colors" onclick="copyText('{{ account.account_name }}', this)">
+          <div class="flex items-center justify-between p-4 rounded-xl" style="background: rgba(255,255,255,0.12);">
+            <div><p class="text-white/70 text-xs uppercase tracking-wide font-medium mb-1">Account Name</p><p class="text-white font-semibold">{{ account.account_name }}</p></div>
+            <button class="copy-btn text-white/70 hover:text-white p-2 rounded-lg transition-colors" onclick="copyText('{{ account.account_name }}', this)">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
             </button>
           </div>
-          <div class="flex items-center justify-between p-4 rounded-xl" style="background: rgba(212,175,55,0.07); border: 1px solid rgba(212,175,55,0.35);">
-            <div><p class="text-gold-400 text-xs uppercase tracking-wide font-medium mb-1">Account Number</p><p class="text-gold-300 font-bold text-2xl tracking-widest" style="text-shadow: 0 0 20px rgba(212,175,55,0.4);">{{ account.account_number }}</p></div>
-            <button class="copy-btn text-gray-500 hover:text-gold-300 p-2 rounded-lg transition-colors" onclick="copyText('{{ account.account_number }}', this)">
+          <div class="flex items-center justify-between p-4 rounded-xl" style="background: rgba(255,255,255,0.2);">
+            <div><p class="text-white/80 text-xs uppercase tracking-wide font-medium mb-1">Account Number</p><p class="text-white font-bold text-2xl tracking-widest">{{ account.account_number }}</p></div>
+            <button class="copy-btn text-white/80 hover:text-white p-2 rounded-lg transition-colors" onclick="copyText('{{ account.account_number }}', this)">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
             </button>
           </div>
         </div>
-        <div class="mt-5 flex items-start gap-3 p-3 rounded-xl" style="background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2);">
-          <svg class="w-4 h-4 text-red-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-          <p class="text-red-300 text-xs">Use your <strong>full name</strong> as the transfer narration so we can identify your payment.</p>
+        <div class="mt-5 flex items-start gap-3 p-3 rounded-xl" style="background: rgba(255,255,255,0.15);">
+          <svg class="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          <p class="text-white text-xs">Use your <strong>full name</strong> as the transfer narration so we can identify your payment.</p>
         </div>
       </div>
       {% else %}
       <div class="glass rounded-2xl p-8 text-center">
-        <p class="text-gray-500">Payment details not set up yet. Please contact us directly.</p>
-        <p class="text-gold-300 text-sm mt-2">hello@daisyglams.com</p>
+        <p class="text-inklight">Payment details not set up yet. Please contact us directly.</p>
+        <p class="text-purple-deep text-sm mt-2">hello@daisyglams.com</p>
       </div>
       {% endif %}
 
@@ -107,48 +106,48 @@
       <form method="POST" enctype="multipart/form-data" class="glass rounded-2xl p-6 lg:p-8 space-y-5">
         {% csrf_token %}
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style="background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.25);">📎</div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl text-purple-deep" style="background: rgba(156,39,176,0.12); border: 1px solid rgba(156,39,176,0.2);"><i class="fas fa-paperclip"></i></div>
           <div>
-            <h2 class="font-serif text-xl font-bold text-white">Upload Payment Proof</h2>
-            <p class="text-gray-500 text-xs">Screenshot or photo of your transfer receipt</p>
+            <h2 class="font-serif text-xl font-bold text-inkdark">Upload Payment Proof</h2>
+            <p class="text-inklight text-xs">Screenshot or photo of your transfer receipt</p>
           </div>
         </div>
 
         {% if form.errors %}
-        <div class="p-3 rounded-xl text-red-300 text-sm" style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);">
-          ⚠ Please fix the errors below.
+        <div class="p-3 rounded-xl text-red-600 text-sm" style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25);">
+          <i class="fas fa-triangle-exclamation"></i> Please fix the errors below.
         </div>
         {% endif %}
 
         <div class="upload-area" onclick="document.getElementById('id_receipt').click()">
           <input type="file" id="id_receipt" name="receipt" accept="image/*,.pdf" class="hidden" onchange="handleProof(this)" required />
           <div id="proof-placeholder">
-            <div class="text-4xl mb-3">📤</div>
-            <p class="text-gray-300 text-sm font-medium">Drop your receipt here</p>
-            <p class="text-gray-600 text-xs mt-1">JPG, PNG, PDF (max 5MB)</p>
+            <i class="fas fa-cloud-arrow-up text-4xl mb-3 text-purple-soft"></i>
+            <p class="text-inkmed text-sm font-medium">Drop your receipt here</p>
+            <p class="text-inklight text-xs mt-1">JPG, PNG, PDF (max 5MB)</p>
           </div>
           <div id="proof-preview" class="hidden flex flex-col items-center gap-2">
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl" style="background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.25);">✅</div>
-            <p class="text-gold-300 text-sm font-semibold" id="proof-filename"></p>
-            <button type="button" onclick="clearProof(event)" class="text-xs text-gray-500 hover:text-red-400 transition-colors">✕ Remove</button>
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl text-green-600" style="background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25);"><i class="fas fa-check"></i></div>
+            <p class="text-purple-deep text-sm font-semibold" id="proof-filename"></p>
+            <button type="button" onclick="clearProof(event)" class="text-xs text-inklight hover:text-red-500 transition-colors">✕ Remove</button>
           </div>
         </div>
-        {% if form.receipt.errors %}<p class="text-red-400 text-xs">{{ form.receipt.errors.0 }}</p>{% endif %}
+        {% if form.receipt.errors %}<p class="text-red-500 text-xs">{{ form.receipt.errors.0 }}</p>{% endif %}
 
         <div>
           <label class="form-label">Name Used for Transfer <span>*</span></label>
           <input type="text" name="sender_name" value="{{ form.sender_name.value|default:'' }}" placeholder="The name on your bank account" class="form-input" required />
-          {% if form.sender_name.errors %}<p class="text-red-400 text-xs mt-1">{{ form.sender_name.errors.0 }}</p>{% endif %}
+          {% if form.sender_name.errors %}<p class="text-red-500 text-xs mt-1">{{ form.sender_name.errors.0 }}</p>{% endif %}
         </div>
         <div>
-          <label class="form-label">Additional Note <span class="text-gray-600 font-normal normal-case tracking-normal">(optional)</span></label>
+          <label class="form-label">Additional Note <span class="text-inklight font-normal normal-case tracking-normal">(optional)</span></label>
           <input type="text" name="note" value="{{ form.note.value|default:'' }}" placeholder="e.g. Sent in two parts" class="form-input" />
         </div>
 
         <div class="space-y-3">
-          <p class="text-gray-600 text-xs text-center">Booking confirmed once payment is verified — usually within a few hours.</p>
-          <button type="submit" class="submit-btn w-full text-black font-bold py-4 rounded-2xl text-base flex items-center justify-center gap-2 transition-all">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <p class="text-inklight text-xs text-center">Booking confirmed once payment is verified — usually within a few hours.</p>
+          <button type="submit" class="submit-btn w-full text-white font-bold py-4 rounded-2xl text-base flex items-center justify-center gap-2 transition-all">
+            <i class="fas fa-shield-halved"></i>
             Submit Payment Proof
           </button>
         </div>
@@ -159,26 +158,26 @@
     <!-- BOOKING SUMMARY -->
     <div class="lg:col-span-2">
       <div class="glass rounded-2xl p-6 sticky top-28 space-y-5">
-        <h3 class="font-serif text-lg font-bold text-white">Booking Summary</h3>
-        <div class="gold-divider"></div>
+        <h3 class="font-serif text-lg font-bold text-inkdark">Booking Summary</h3>
+        <div class="divider-line"></div>
         <div class="space-y-0">
-          <div class="sum-row"><span class="text-gray-500 text-sm">Service</span><span class="text-white text-sm font-medium text-right">{{ appointment.service }}</span></div>
-          <div class="sum-row"><span class="text-gray-500 text-sm">Date</span><span class="text-white text-sm font-medium">{{ appointment.preferred_date|date:"D, M d, Y" }}</span></div>
-          <div class="sum-row"><span class="text-gray-500 text-sm">Time</span><span class="text-white text-sm font-medium">{{ appointment.preferred_time }}</span></div>
-          <div class="sum-row"><span class="text-gray-500 text-sm">Name</span><span class="text-white text-sm font-medium">{{ appointment.first_name }} {{ appointment.last_name }}</span></div>
-          <div class="sum-row"><span class="text-gray-500 text-sm">Email</span><span class="text-white text-sm font-medium text-right max-w-[55%] truncate">{{ appointment.email }}</span></div>
-          <div class="sum-row"><span class="text-gray-500 text-sm">Phone</span><span class="text-white text-sm font-medium">{{ appointment.phone }}</span></div>
+          <div class="sum-row"><span class="text-inklight text-sm">Service</span><span class="text-inkdark text-sm font-medium text-right">{{ appointment.service }}</span></div>
+          <div class="sum-row"><span class="text-inklight text-sm">Date</span><span class="text-inkdark text-sm font-medium">{{ appointment.preferred_date|date:"D, M d, Y" }}</span></div>
+          <div class="sum-row"><span class="text-inklight text-sm">Time</span><span class="text-inkdark text-sm font-medium">{{ appointment.preferred_time }}</span></div>
+          <div class="sum-row"><span class="text-inklight text-sm">Name</span><span class="text-inkdark text-sm font-medium">{{ appointment.first_name }} {{ appointment.last_name }}</span></div>
+          <div class="sum-row"><span class="text-inklight text-sm">Email</span><span class="text-inkdark text-sm font-medium text-right max-w-[55%] truncate">{{ appointment.email }}</span></div>
+          <div class="sum-row"><span class="text-inklight text-sm">Phone</span><span class="text-inkdark text-sm font-medium">{{ appointment.phone }}</span></div>
         </div>
-        <div class="gold-divider"></div>
+        <div class="divider-line"></div>
         {% if account.whatsapp_number %}
         <a href="https://wa.me/{{ account.whatsapp_number }}?text=Hi%20Daisyglams!%20I%20just%20made%20a%20payment." target="_blank"
            class="flex items-center gap-3 p-3 rounded-xl transition-all"
-           style="background: rgba(37,211,102,0.07); border: 1px solid rgba(37,211,102,0.2);">
-          <svg class="w-5 h-5 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          <div><p class="text-green-300 text-xs font-semibold">Paid already?</p><p class="text-gray-500 text-xs">Chat us on WhatsApp →</p></div>
+           style="background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.25);">
+          <svg class="w-5 h-5 text-green-600 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          <div><p class="text-green-700 text-xs font-semibold">Paid already?</p><p class="text-inklight text-xs">Chat us on WhatsApp →</p></div>
         </a>
         {% endif %}
-        <a href="{% url 'bookings:booking' %}" class="block text-center text-xs text-gray-600 hover:text-gold-300 transition-colors">← Change my booking</a>
+        <a href="{% url 'bookings:booking' %}" class="block text-center text-xs text-inklight hover:text-purple-main transition-colors">← Change my booking</a>
       </div>
     </div>
 
