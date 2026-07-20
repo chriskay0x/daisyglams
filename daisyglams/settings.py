@@ -140,7 +140,6 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 CSRF_TRUSTED_ORIGINS = [
-    ''
     'http://127.0.0.1:8000/'
 ]
 
@@ -152,7 +151,8 @@ STORAGES = {
             "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND":
+            "cloudinary_storage.storage.StaticCloudinaryStorage",
     },
 }
 
