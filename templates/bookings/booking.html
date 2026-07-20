@@ -4,21 +4,21 @@
 {% block meta_description %}Book your nail appointment at Daisyglams. Choose your service, pick a date and time.{% endblock %}
 
 {% block extra_styles %}
-.form-input { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 12px 16px; color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.9rem; transition: all 0.3s; outline: none; }
-.form-input:focus { border-color: rgba(212,175,55,0.6); box-shadow: 0 0 0 3px rgba(212,175,55,0.08); background: rgba(255,255,255,0.06); }
-.form-input::placeholder { color: rgba(156,163,175,0.5); }
-select.form-input option { background: #1a1a2e; color: #fff; }
-.form-label { display: block; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #9ca3af; margin-bottom: 8px; }
-.form-label span { color: #D4AF37; }
+.form-input { width: 100%; background: rgba(255,255,255,0.7); border: 1px solid rgba(156,39,176,0.2); border-radius: 12px; padding: 12px 16px; color: var(--text-dark); font-family: 'Poppins', sans-serif; font-size: 0.9rem; transition: all 0.3s; outline: none; }
+.form-input:focus { border-color: rgba(156,39,176,0.5); box-shadow: 0 0 0 3px rgba(156,39,176,0.1); background: #ffffff; }
+.form-input::placeholder { color: var(--text-light); }
+select.form-input option { background: #ffffff; color: var(--text-dark); }
+.form-label { display: block; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-medium); margin-bottom: 8px; }
+.form-label span { color: var(--pink-deep); }
 .error-field { border-color: rgba(239,68,68,0.5) !important; }
-.upload-area { border: 2px dashed rgba(212,175,55,0.25); border-radius: 14px; padding: 28px; text-align: center; cursor: pointer; transition: all 0.3s; background: rgba(255,255,255,0.02); }
-.upload-area:hover { border-color: rgba(212,175,55,0.5); background: rgba(212,175,55,0.03); }
+.upload-area { border: 2px dashed rgba(156,39,176,0.25); border-radius: 14px; padding: 28px; text-align: center; cursor: pointer; transition: all 0.3s; background: rgba(255,255,255,0.4); }
+.upload-area:hover { border-color: rgba(156,39,176,0.5); background: rgba(156,39,176,0.04); }
 @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-.submit-btn { background: linear-gradient(90deg, #B8860B, #D4AF37, #F0C040, #D4AF37, #B8860B); background-size: 200% auto; animation: shimmer 3s linear infinite; transition: transform 0.2s, box-shadow 0.2s; }
-.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212,175,55,0.5); }
+.submit-btn { background: linear-gradient(90deg, #d63384, #ff69b4, #9c27b0, #ff69b4, #d63384); background-size: 200% auto; animation: shimmer 3s linear infinite; transition: transform 0.2s, box-shadow 0.2s; }
+.submit-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-medium); }
 .process-step { position: relative; padding-left: 52px; }
-.process-step::before { content: attr(data-num); position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #D4AF37, #F0C040); color: #000; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
-.process-step::after { content: ''; position: absolute; left: 17px; top: 40px; width: 2px; height: calc(100% - 4px); background: linear-gradient(to bottom, rgba(212,175,55,0.3), transparent); }
+.process-step::before { content: attr(data-num); position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--gradient-main); color: #fff; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
+.process-step::after { content: ''; position: absolute; left: 17px; top: 40px; width: 2px; height: calc(100% - 4px); background: linear-gradient(to bottom, rgba(156,39,176,0.3), transparent); }
 .process-step:last-child::after { display: none; }
 {% endblock %}
 
@@ -26,15 +26,15 @@ select.form-input option { background: #1a1a2e; color: #fff; }
 
 <!-- HEADER -->
 <section class="pt-36 pb-10 px-6 lg:px-16 relative overflow-hidden">
-  <div class="orb w-72 h-72 bg-purple-700 opacity-20 top-0 right-0"></div>
+  <div class="orb w-72 h-72 bg-purple-main opacity-15 top-0 right-0"></div>
   <div class="max-w-7xl mx-auto text-center space-y-4">
-    <div class="inline-flex items-center gap-2 text-gold-300 text-xs font-medium tracking-widest uppercase">
-      <div class="w-8 h-px bg-gold-400"></div>Reserve Your Spot<div class="w-8 h-px bg-gold-400"></div>
+    <div class="inline-flex items-center gap-2 text-purple-deep text-xs font-medium tracking-widest uppercase">
+      <div class="w-8 h-px bg-purple-main"></div>Reserve Your Spot<div class="w-8 h-px bg-purple-main"></div>
     </div>
     <h1 class="font-serif text-5xl lg:text-6xl font-bold">
-      <span class="text-white">Book an </span><span class="text-gold-gradient">Appointment</span>
+      <span class="text-inkdark">Book an </span><span class="text-gradient">Appointment</span>
     </h1>
-    <p class="text-gray-400 text-lg max-w-xl mx-auto">Fill in your details below and we'll confirm your booking shortly. Can't wait to glam you up! 💅</p>
+    <p class="text-inkmed text-lg max-w-xl mx-auto">Fill in your details below and we'll confirm your booking shortly. Can't wait to glam you up! <i class="fas fa-gem"></i></p>
   </div>
 </section>
 
@@ -43,33 +43,33 @@ select.form-input option { background: #1a1a2e; color: #fff; }
   <div class="max-w-2xl mx-auto">
     <div class="flex items-start justify-between">
       <div class="flex flex-col items-center gap-1.5 flex-1 text-center">
-        <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-black" style="background: linear-gradient(135deg, #D4AF37, #F0C040);">1</div>
-        <span class="text-xs text-gold-400 font-medium">Fill Form</span>
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background: var(--gradient-main);">1</div>
+        <span class="text-xs text-purple-deep font-medium">Fill Form</span>
       </div>
-      <div class="flex-1 h-px mt-4" style="background: rgba(212,175,55,0.2);"></div>
+      <div class="flex-1 h-px mt-4" style="background: rgba(156,39,176,0.2);"></div>
       <div class="flex flex-col items-center gap-1.5 flex-1 text-center">
-        <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); color: #D4AF37;">2</div>
-        <span class="text-xs text-gray-500">Payment</span>
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style="background: rgba(156,39,176,0.1); border: 1px solid rgba(156,39,176,0.3); color: var(--purple-deep);">2</div>
+        <span class="text-xs text-inklight">Payment</span>
       </div>
-      <div class="flex-1 h-px mt-4" style="background: rgba(212,175,55,0.2);"></div>
+      <div class="flex-1 h-px mt-4" style="background: rgba(156,39,176,0.2);"></div>
       <div class="flex flex-col items-center gap-1.5 flex-1 text-center">
-        <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); color: #D4AF37;">3</div>
-        <span class="text-xs text-gray-500">Upload Proof</span>
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style="background: rgba(156,39,176,0.1); border: 1px solid rgba(156,39,176,0.3); color: var(--purple-deep);">3</div>
+        <span class="text-xs text-inklight">Upload Proof</span>
       </div>
-      <div class="flex-1 h-px mt-4" style="background: rgba(212,175,55,0.2);"></div>
+      <div class="flex-1 h-px mt-4" style="background: rgba(156,39,176,0.2);"></div>
       <div class="flex flex-col items-center gap-1.5 flex-1 text-center">
-        <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.3); color: #D4AF37;">4</div>
-        <span class="text-xs text-gray-500">Confirmed!</span>
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style="background: rgba(156,39,176,0.1); border: 1px solid rgba(156,39,176,0.3); color: var(--purple-deep);">4</div>
+        <span class="text-xs text-inklight">Confirmed!</span>
       </div>
     </div>
   </div>
 </section>
 
-<div class="gold-divider"></div>
+<div class="divider-line"></div>
 
 <!-- FORM + SIDEBAR -->
 <section class="py-12 pb-24 px-6 lg:px-16 relative overflow-hidden">
-  <div class="orb w-80 h-80 bg-purple-900 opacity-15 bottom-0 left-0"></div>
+  <div class="orb w-80 h-80 bg-pink-soft opacity-15 bottom-0 left-0"></div>
   <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-10">
 
     <!-- FORM -->
@@ -79,125 +79,125 @@ select.form-input option { background: #1a1a2e; color: #fff; }
 
         <!-- Form errors -->
         {% if form.errors %}
-        <div class="p-4 rounded-xl text-red-300 text-sm" style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);">
-          ⚠ Please fix the errors below before continuing.
+        <div class="p-4 rounded-xl text-red-500 text-sm" style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25);">
+          <i class="fas fa-triangle-exclamation"></i> Please fix the errors below before continuing.
         </div>
         {% endif %}
 
         <!-- Service -->
         <div class="glass rounded-2xl p-6 lg:p-8 space-y-5">
           <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-black font-bold text-sm" style="background: linear-gradient(135deg, #D4AF37, #F0C040);">1</div>
-            <h2 class="font-serif text-xl font-bold text-white">Choose Your Service</h2>
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm" style="background: var(--gradient-main);">1</div>
+            <h2 class="font-serif text-xl font-bold text-inkdark">Choose Your Service</h2>
           </div>
           {% if form.service.errors %}
-          <p class="text-red-400 text-xs">{{ form.service.errors.0 }}</p>
+          <p class="text-red-500 text-xs">{{ form.service.errors.0 }}</p>
           {% endif %}
           {% if services %}
           <div class="grid sm:grid-cols-2 gap-3">
             {% for service in services %}
-            <label class="flex items-start gap-3 p-4 rounded-xl cursor-pointer transition-all hover:border-gold-400/40"
-                   style="border: 1px solid rgba(212,175,55,0.2); background: rgba(255,255,255,0.02);"
+            <label class="flex items-start gap-3 p-4 rounded-xl cursor-pointer transition-all hover:border-purple-main/40"
+                   style="border: 1px solid rgba(156,39,176,0.2); background: rgba(255,255,255,0.5);"
                    id="svc-label-{{ service.pk }}">
               <input type="radio" name="service" value="{{ service.pk }}"
-                     class="mt-1 accent-yellow-400"
+                     class="mt-1 accent-purple-main"
                      onchange="highlightService({{ service.pk }})"
                      {% if form.service.value == service.pk|stringformat:'s' %}checked{% endif %} />
               <div>
                 <p class="text-xl mb-1">{{ service.emoji }}</p>
-                <p class="text-white font-medium text-sm">{{ service.name }}</p>
-                <p class="text-gold-300 text-xs mt-0.5">From ₦{{ service.price|floatformat:"0" }}</p>
+                <p class="text-inkdark font-medium text-sm">{{ service.name }}</p>
+                <p class="text-purple-deep text-xs mt-0.5">From ₦{{ service.price|floatformat:"0" }}</p>
               </div>
             </label>
             {% endfor %}
           </div>
           {% else %}
-          <p class="text-gray-500 text-sm">No services available yet. Please check back soon.</p>
+          <p class="text-inklight text-sm">No services available yet. Please check back soon.</p>
           {% endif %}
         </div>
 
         <!-- Date & Time -->
         <div class="glass rounded-2xl p-6 lg:p-8 space-y-5">
           <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-black font-bold text-sm" style="background: linear-gradient(135deg, #D4AF37, #F0C040);">2</div>
-            <h2 class="font-serif text-xl font-bold text-white">Pick a Date & Time</h2>
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm" style="background: var(--gradient-main);">2</div>
+            <h2 class="font-serif text-xl font-bold text-inkdark">Pick a Date & Time</h2>
           </div>
-          <p class="text-gray-500 text-sm -mt-2">We're open Monday – Saturday, 9am to 7pm.</p>
+          <p class="text-inklight text-sm -mt-2">We're open Monday – Saturday, 9am to 7pm.</p>
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label class="form-label">Preferred Date <span>*</span></label>
               <input type="date" name="preferred_date" id="id_preferred_date" value="{{ form.preferred_date.value|default:'' }}"
                      class="form-input {% if form.preferred_date.errors %}error-field{% endif %}" required />
-              {% if form.preferred_date.errors %}<p class="text-red-400 text-xs mt-1">{{ form.preferred_date.errors.0 }}</p>{% endif %}
+              {% if form.preferred_date.errors %}<p class="text-red-500 text-xs mt-1">{{ form.preferred_date.errors.0 }}</p>{% endif %}
             </div>
             <div>
               <label class="form-label">Preferred Time <span>*</span></label>
               <input type="text" name="preferred_time" value="{{ form.preferred_time.value|default:'' }}"
                      placeholder="e.g. 10am or 2:30pm"
                      class="form-input {% if form.preferred_time.errors %}error-field{% endif %}" required />
-              {% if form.preferred_time.errors %}<p class="text-red-400 text-xs mt-1">{{ form.preferred_time.errors.0 }}</p>{% endif %}
+              {% if form.preferred_time.errors %}<p class="text-red-500 text-xs mt-1">{{ form.preferred_time.errors.0 }}</p>{% endif %}
             </div>
           </div>
-          <div class="flex items-start gap-3 p-3 rounded-xl" style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2);">
-            <svg class="w-4 h-4 text-purple-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <p class="text-purple-300 text-xs">Your appointment time is subject to availability. We'll confirm within 24 hours of receiving your booking and payment.</p>
+          <div class="flex items-start gap-3 p-3 rounded-xl" style="background: rgba(156,39,176,0.08); border: 1px solid rgba(156,39,176,0.2);">
+            <i class="fas fa-circle-info text-purple-main mt-0.5 shrink-0"></i>
+            <p class="text-purple-deep text-xs">Your appointment time is subject to availability. We'll confirm within 24 hours of receiving your booking and payment.</p>
           </div>
         </div>
 
         <!-- Personal Details -->
         <div class="glass rounded-2xl p-6 lg:p-8 space-y-5">
           <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-black font-bold text-sm" style="background: linear-gradient(135deg, #D4AF37, #F0C040);">3</div>
-            <h2 class="font-serif text-xl font-bold text-white">Your Details</h2>
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm" style="background: var(--gradient-main);">3</div>
+            <h2 class="font-serif text-xl font-bold text-inkdark">Your Details</h2>
           </div>
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label class="form-label">First Name <span>*</span></label>
               <input type="text" name="first_name" value="{{ form.first_name.value|default:'' }}" placeholder="e.g. Amara"
                      class="form-input {% if form.first_name.errors %}error-field{% endif %}" required />
-              {% if form.first_name.errors %}<p class="text-red-400 text-xs mt-1">{{ form.first_name.errors.0 }}</p>{% endif %}
+              {% if form.first_name.errors %}<p class="text-red-500 text-xs mt-1">{{ form.first_name.errors.0 }}</p>{% endif %}
             </div>
             <div>
               <label class="form-label">Last Name <span>*</span></label>
               <input type="text" name="last_name" value="{{ form.last_name.value|default:'' }}" placeholder="e.g. Okafor"
                      class="form-input {% if form.last_name.errors %}error-field{% endif %}" required />
-              {% if form.last_name.errors %}<p class="text-red-400 text-xs mt-1">{{ form.last_name.errors.0 }}</p>{% endif %}
+              {% if form.last_name.errors %}<p class="text-red-500 text-xs mt-1">{{ form.last_name.errors.0 }}</p>{% endif %}
             </div>
           </div>
           <div>
             <label class="form-label">Email Address <span>*</span></label>
             <input type="email" name="email" value="{{ form.email.value|default:'' }}" placeholder="yourname@email.com"
                    class="form-input {% if form.email.errors %}error-field{% endif %}" required />
-            {% if form.email.errors %}<p class="text-red-400 text-xs mt-1">{{ form.email.errors.0 }}</p>{% endif %}
+            {% if form.email.errors %}<p class="text-red-500 text-xs mt-1">{{ form.email.errors.0 }}</p>{% endif %}
           </div>
           <div>
             <label class="form-label">Phone Number <span>*</span></label>
             <input type="tel" name="phone" value="{{ form.phone.value|default:'' }}" placeholder="+234 800 000 0000"
                    class="form-input {% if form.phone.errors %}error-field{% endif %}" required />
-            {% if form.phone.errors %}<p class="text-red-400 text-xs mt-1">{{ form.phone.errors.0 }}</p>{% endif %}
+            {% if form.phone.errors %}<p class="text-red-500 text-xs mt-1">{{ form.phone.errors.0 }}</p>{% endif %}
           </div>
         </div>
 
         <!-- Notes & Inspo -->
         <div class="glass rounded-2xl p-6 lg:p-8 space-y-5">
           <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-black font-bold text-sm" style="background: linear-gradient(135deg, #D4AF37, #F0C040);">4</div>
-            <h2 class="font-serif text-xl font-bold text-white">Inspiration & Notes</h2>
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm" style="background: var(--gradient-main);">4</div>
+            <h2 class="font-serif text-xl font-bold text-inkdark">Inspiration & Notes</h2>
           </div>
-          <p class="text-gray-500 text-sm -mt-2">Optional — but the more details, the better!</p>
+          <p class="text-inklight text-sm -mt-2">Optional — but the more details, the better!</p>
           <div>
-            <label class="form-label">Inspiration Photo <span class="text-gray-600 font-normal normal-case tracking-normal">(optional)</span></label>
+            <label class="form-label">Inspiration Photo <span class="text-inklight font-normal normal-case tracking-normal">(optional)</span></label>
             <div class="upload-area" onclick="document.getElementById('id_inspiration_image').click()">
               <input type="file" id="id_inspiration_image" name="inspiration_image" accept="image/*" class="hidden" onchange="previewInspo(this)" />
               <div id="inspo-placeholder">
-                <div class="text-3xl mb-2">🖼️</div>
-                <p class="text-gray-400 text-sm">Click to upload your inspo image</p>
-                <p class="text-gray-600 text-xs mt-1">JPG, PNG (max 5MB)</p>
+                <i class="fas fa-image text-3xl mb-2 text-purple-soft"></i>
+                <p class="text-inkmed text-sm">Click to upload your inspo image</p>
+                <p class="text-inklight text-xs mt-1">JPG, PNG (max 5MB)</p>
               </div>
               <div id="inspo-preview" class="hidden">
                 <img id="inspo-img" src="" alt="Inspiration" class="max-h-36 mx-auto rounded-xl" />
-                <p class="text-gold-300 text-xs mt-2" id="inspo-name"></p>
-                <button type="button" onclick="clearInspo(event)" class="mt-1 text-xs text-gray-500 hover:text-red-400 transition-colors">✕ Remove</button>
+                <p class="text-purple-deep text-xs mt-2" id="inspo-name"></p>
+                <button type="button" onclick="clearInspo(event)" class="mt-1 text-xs text-inklight hover:text-red-500 transition-colors">✕ Remove</button>
               </div>
             </div>
           </div>
@@ -210,9 +210,9 @@ select.form-input option { background: #1a1a2e; color: #fff; }
 
         <!-- Submit -->
         <div class="space-y-3">
-          <p class="text-gray-600 text-xs text-center">By submitting, your booking is only confirmed after payment verification.</p>
-          <button type="submit" class="submit-btn w-full text-black font-bold py-4 rounded-2xl text-base flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <p class="text-inklight text-xs text-center">By submitting, your booking is only confirmed after payment verification.</p>
+          <button type="submit" class="submit-btn w-full text-white font-bold py-4 rounded-2xl text-base flex items-center justify-center gap-2">
+            <i class="fas fa-calendar-check"></i>
             Proceed to Payment →
           </button>
         </div>
@@ -223,36 +223,36 @@ select.form-input option { background: #1a1a2e; color: #fff; }
     <!-- SIDEBAR -->
     <div>
       <div class="glass rounded-2xl p-6 sticky top-28 space-y-5">
-        <h3 class="font-serif text-lg font-bold text-white">Visit Us</h3>
-        <div class="gold-divider"></div>
+        <h3 class="font-serif text-lg font-bold text-inkdark">Visit Us</h3>
+        <div class="divider-line"></div>
         <div class="space-y-4">
           <div class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.2);">
-              <svg class="w-4 h-4 text-gold-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(156,39,176,0.1); border: 1px solid rgba(156,39,176,0.2);">
+              <i class="fas fa-location-dot text-purple-deep"></i>
             </div>
             <div>
-              <p class="text-gray-500 text-xs uppercase tracking-wide font-medium mb-0.5">Address</p>
-              <p class="text-gray-300 text-sm leading-relaxed">123 Beauty Lane, Victoria Island<br/>Lagos, Nigeria</p>
+              <p class="text-inklight text-xs uppercase tracking-wide font-medium mb-0.5">Address</p>
+              <p class="text-inkmed text-sm leading-relaxed">123 Beauty Lane, Victoria Island<br/>Lagos, Nigeria</p>
             </div>
           </div>
           <div class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.2);">
-              <svg class="w-4 h-4 text-gold-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(156,39,176,0.1); border: 1px solid rgba(156,39,176,0.2);">
+              <i class="fas fa-clock text-purple-deep"></i>
             </div>
             <div>
-              <p class="text-gray-500 text-xs uppercase tracking-wide font-medium mb-0.5">Hours</p>
-              <p class="text-gray-300 text-sm">Mon – Sat: 9am – 7pm</p>
-              <p class="text-gray-500 text-xs">Closed Sundays</p>
+              <p class="text-inklight text-xs uppercase tracking-wide font-medium mb-0.5">Hours</p>
+              <p class="text-inkmed text-sm">Mon – Sat: 9am – 7pm</p>
+              <p class="text-inklight text-xs">Closed Sundays</p>
             </div>
           </div>
         </div>
-        <div class="gold-divider"></div>
-        <h4 class="text-gold-300 text-xs font-semibold uppercase tracking-widest">How It Works</h4>
+        <div class="divider-line"></div>
+        <h4 class="text-purple-deep text-xs font-semibold uppercase tracking-widest">How It Works</h4>
         <div class="space-y-4">
-          <div class="process-step pb-4" data-num="1"><p class="text-white text-sm font-medium">Fill this form</p><p class="text-gray-500 text-xs mt-0.5">Choose your service, date & details.</p></div>
-          <div class="process-step pb-4" data-num="2"><p class="text-white text-sm font-medium">Make payment</p><p class="text-gray-500 text-xs mt-0.5">Transfer to our account.</p></div>
-          <div class="process-step pb-4" data-num="3"><p class="text-white text-sm font-medium">Upload proof</p><p class="text-gray-500 text-xs mt-0.5">Submit your receipt.</p></div>
-          <div class="process-step" data-num="4"><p class="text-white text-sm font-medium">You're confirmed! 🎉</p><p class="text-gray-500 text-xs mt-0.5">We'll email your confirmation.</p></div>
+          <div class="process-step pb-4" data-num="1"><p class="text-inkdark text-sm font-medium">Fill this form</p><p class="text-inklight text-xs mt-0.5">Choose your service, date & details.</p></div>
+          <div class="process-step pb-4" data-num="2"><p class="text-inkdark text-sm font-medium">Make payment</p><p class="text-inklight text-xs mt-0.5">Transfer to our account.</p></div>
+          <div class="process-step pb-4" data-num="3"><p class="text-inkdark text-sm font-medium">Upload proof</p><p class="text-inklight text-xs mt-0.5">Submit your receipt.</p></div>
+          <div class="process-step" data-num="4"><p class="text-inkdark text-sm font-medium">You're confirmed! <i class="fas fa-champagne-glasses"></i></p><p class="text-inklight text-xs mt-0.5">We'll email your confirmation.</p></div>
         </div>
       </div>
     </div>
@@ -268,13 +268,13 @@ select.form-input option { background: #1a1a2e; color: #fff; }
 
   function highlightService(id) {
     document.querySelectorAll('[id^="svc-label-"]').forEach(el => {
-      el.style.borderColor = 'rgba(212,175,55,0.2)';
-      el.style.background = 'rgba(255,255,255,0.02)';
+      el.style.borderColor = 'rgba(156,39,176,0.2)';
+      el.style.background = 'rgba(255,255,255,0.5)';
     });
     const selected = document.getElementById('svc-label-' + id);
     if (selected) {
-      selected.style.borderColor = '#D4AF37';
-      selected.style.background = 'rgba(212,175,55,0.08)';
+      selected.style.borderColor = '#9c27b0';
+      selected.style.background = 'rgba(156,39,176,0.06)';
     }
   }
 
