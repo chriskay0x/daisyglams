@@ -148,10 +148,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 STORAGES = {
     "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "daisyglams.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "daisyglams.storage.CompressedStaticFilesStorage",
     },
 }
 
