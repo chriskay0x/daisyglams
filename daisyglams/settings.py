@@ -33,7 +33,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
     ".railway.app",
-    ".onrender.com"
+    ".onrender.com",
     "localhost",
     "127.0.0.1",
 ]
@@ -94,9 +94,8 @@ WSGI_APPLICATION = 'daisyglams.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
+        default=os.getenv('DATABASE_PUBLIC_URL'),
         conn_max_age=600,
-        conn_health_checks=True,
     )
 }
 
@@ -139,9 +138,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-CSRF_TRUSTED_ORIGINS = [
-    'http://127.0.0.1:8000/'
-]
+CSRF_TRUSTED_ORIGINS = os.getenv(
+    'CSRF_TRUSTED_ORIGINS',
+    'https://*.railway.app,https://*.up.railway.app,https://*.onrender.com,http://127.0.0.1:8000'
+).split(',')
 
 CORS_ALLOW_ALL_ORIGINS = True
 
