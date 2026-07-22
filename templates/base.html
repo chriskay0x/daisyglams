@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="shortcut icon" href="{% static 'images/Daisy_New_Logo.png' %}" type="image/x-icon">
   <script>
     tailwind.config = {
       theme: {
@@ -60,7 +62,9 @@
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-4 px-6 lg:px-16">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       <a href="{% url 'core:home' %}" class="flex items-center gap-2">
-        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm relative pulse-ring" style="background: var(--gradient-main); box-shadow: 0 0 20px rgba(156,39,176,0.3);">D</div>
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm relative pulse-ring" style="background: var(--gradient-main); box-shadow: 0 0 20px rgba(156,39,176,0.3);">
+          <img src="{% static 'images/Daisy_New_Logo.png' %}" alt="Daisyglams Logo">
+        </div>
         <span class="font-serif text-2xl tracking-wide"><span class="text-gradient font-bold">Daisy</span><span class="text-inkdark">glams</span></span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm font-medium">

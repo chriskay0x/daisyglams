@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="shortcut icon" href="{% static 'images/Daisy_New_Logo.png' %}" type="image/x-icon">
   <script>
     tailwind.config = {
       theme: {
@@ -66,7 +68,9 @@
       <!-- Logo -->
       <div class="p-6 pb-4">
         <a href="{% url 'dashboard:overview' %}" class="flex items-center gap-2">
-          <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background: linear-gradient(135deg, #ff69b4, #9c27b0);">D</div>
+          <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background: linear-gradient(135deg, #ff69b4, #9c27b0);">
+            <img src="{% static 'images/Daisy_New_Logo.png' %}" alt="Daisyglams Logo">
+          </div>
           <span class="font-serif text-xl"><span class="text-gradient font-bold">Daisy</span><span class="text-inkdark">glams</span></span>
         </a>
         <p class="text-inklight text-xs mt-1 ml-11">Admin Dashboard</p>
@@ -138,7 +142,9 @@
           </button>
           <!-- Admin badge -->
           <div class="hidden sm:flex items-center gap-2 glass rounded-full px-3 py-1.5">
-            <div class="w-6 h-6 rounded-full flex items-center justify-center text-white font-bold text-xs" style="background: linear-gradient(135deg, #ff69b4, #9c27b0);">D</div>
+            <div class="w-6 h-6 rounded-full flex items-center justify-center text-white font-bold text-xs" style="background: linear-gradient(135deg, #ff69b4, #9c27b0);">
+              <img src="{% static 'images/Daisy_New_Logo.png' %}" alt="Daisyglams Logo">
+            </div>
             <span class="text-xs text-inkmed">{{ request.user.username }}</span>
           </div>
         </div>
